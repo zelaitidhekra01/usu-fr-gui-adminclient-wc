@@ -28,6 +28,7 @@ export class AppComponent {
   }
 
 
+
   public addName(): void {
     this.names.push(this.currentName);
     this.currentName = '';
