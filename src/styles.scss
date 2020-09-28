@@ -1,4 +1,13 @@
 $usu-input-enabled-themes: (more-u-theme, more-u-orange-theme);
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/themes/dark.scss';
+@import '~@swimlane/ngx-datatable/themes/bootstrap.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+@import '../node_modules/usu-fr-gui-commons/style/_smartcollect.scss';
+@import "../node_modules/usu-fr-gui-commons/style/_ngx-datatable-sc.scss";
+@import "../node_modules/usu-fr-gui-commons/style/_material-sc";
 
 // import theming engine
 @import '~@usu/theming-engine/lib/index';
@@ -12,4 +21,27 @@ $usu-input-enabled-themes: (more-u-theme, more-u-orange-theme);
 
 @include usu-include-global-theme() {
   @include usu-global-styling();
+}
+
+@font-face {
+  font-family: open-sans;
+  src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: open-sans-semibold;
+  src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Semibold.ttf");
+}
+
+// css for mat dialog
+mat-dialog-container.mat-dialog-container {
+  padding: 0;
+}
+
+.easy-page {
+  padding: 15px;
+}
+
+pre {
+  white-space: pre-wrap;
 }

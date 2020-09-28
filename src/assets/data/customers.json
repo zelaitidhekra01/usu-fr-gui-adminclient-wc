@@ -1,0 +1,405 @@
+
+[
+    {
+      "clientId": 1,
+      "clientName": "Elsevier Masson"
+    },
+    {
+      "clientId": 2,
+      "clientName": "Easyteam"
+    },
+    {
+      "clientId": 3,
+      "clientName": "Biomnis"
+    },
+    {
+      "clientId": 4,
+      "clientName": "CG89"
+    },
+    {
+      "clientId": 18,
+      "clientName": "Zannier Garsys"
+    },
+    {
+      "clientId": 19,
+      "clientName": "Apria"
+    },
+    {
+      "clientId": 8,
+      "clientName": "Vizada"
+    },
+    {
+      "clientId": 6,
+      "clientName": "Synchrotron SOLEIL"
+    },
+    {
+      "clientId": 9,
+      "clientName": "Sodilac"
+    },
+    {
+      "clientId": 17,
+      "clientName": "Salomon"
+    },
+    {
+      "clientId": 67,
+      "clientName": "Sanofi"
+    },
+    {
+      "clientId": 110,
+      "clientName": "EUROFOS"
+    },
+    {
+      "clientId": 11,
+      "clientName": "Lanvin"
+    },
+    {
+      "clientId": 14,
+      "clientName": "GCatrans"
+    },
+    {
+      "clientId": 10,
+      "clientName": "Toupargel"
+    },
+    {
+      "clientId": 12,
+      "clientName": "Metaboli"
+    },
+    {
+      "clientId": 13,
+      "clientName": "CH Tourcoing"
+    },
+    {
+      "clientId": 20,
+      "clientName": "ClientTest"
+    },
+    {
+      "clientId": 24,
+      "clientName": "Roset"
+    },
+    {
+      "clientId": 25,
+      "clientName": "Demo"
+    
+    },
+    {
+      "clientId": 30,
+      "clientName": "Commerce b to c"
+    },
+    {
+      "clientId": 79,
+      "clientName": "Gras Savoye"
+    },
+    {
+      "clientId": 35,
+      "clientName": "PagesJaunes"
+    },
+    {
+      "clientId": 37,
+      "clientName": "Canal Plus DMD"
+    },
+    {
+      "clientId": 69,
+      "clientName": "Cavimac"
+    },
+    {
+      "clientId": 41,
+      "clientName": "Nexans"
+    },
+    {
+      "clientId": 44,
+      "clientName": "EOLE"
+    },
+    {
+      "clientId": 116,
+      "clientName": "RAJA"
+    },
+    {
+      "clientId": 82,
+      "clientName": "CNAV"
+    },
+    {
+      "clientId": 60,
+      "clientName": "SNCF"
+    },
+    {
+      "clientId": 62,
+      "clientName": "CAS-VP"
+    },
+    {
+      "clientId": 85,
+      "clientName": "Solly Azar"
+    },
+    {
+      "clientId": 95,
+      "clientName": "EASYTRUST test lab LMS"
+    },
+    {
+      "clientId": 98,
+      "clientName": "ARKEA"
+    },
+    {
+      "clientId": 103,
+      "clientName": "CENTREON"
+    },
+    {
+      "clientId": 28,
+      "clientName": "Internal Use"
+    },
+    {
+      "clientId": 33,
+      "clientName": "U GIE IRIS"
+    },
+    {
+      "clientId": 43,
+      "clientName": "PREPAY"
+    },
+    {
+      "clientId": 49,
+      "clientName": "Poclain hydraulics"
+    },
+    {
+      "clientId": 51,
+      "clientName": "Ellisphere"
+    },
+    {
+      "clientId": 73,
+      "clientName": "COMGEST"
+    },
+    {
+      "clientId": 76,
+      "clientName": "MNH"
+    },
+    {
+      "clientId": 78,
+      "clientName": "BUT"
+    },
+    {
+      "clientId": 88,
+      "clientName": "Alstom"
+    },
+    {
+      "clientId": 90,
+      "clientName": "GT40"
+    },
+    {
+      "clientId": 92,
+      "clientName": "Eclipsys"
+    },
+    {
+      "clientId": 97,
+      "clientName": "Agglomération Valence Roman"
+    },
+    {
+      "clientId": 100,
+      "clientName": "Belambra"
+    },
+    {
+      "clientId": 104,
+      "clientName": "ALPTIS"
+    },
+    {
+      "clientId": 111,
+      "clientName": "BPCE"
+    },
+    {
+      "clientId": 39,
+      "clientName": "BELL"
+    },
+    {
+      "clientId": 42,
+      "clientName": "Biomerieux"
+    },
+    {
+      "clientId": 47,
+      "clientName": "DILA"
+    },
+    {
+      "clientId": 50,
+      "clientName": "Itce"
+    },
+    {
+      "clientId": 53,
+      "clientName": "Silca"
+    },
+    {
+      "clientId": 54,
+      "clientName": "ANSES"
+    },
+    {
+      "clientId": 57,
+      "clientName": "MEESCHAERT"
+    },
+    {
+      "clientId": 59,
+      "clientName": "Conforama"
+    },
+    {
+      "clientId": 63,
+      "clientName": "GMP"
+    },
+    {
+      "clientId": 64,
+      "clientName": "CDROM"
+    },
+    {
+      "clientId": 70,
+      "clientName": "Thales Demo"
+    },
+    {
+      "clientId": 75,
+      "clientName": "Mordor"
+    },
+    {
+      "clientId": 77,
+      "clientName": "E-MERCHANT"
+    },
+    {
+      "clientId": 80,
+      "clientName": "ETAM"
+    },
+    {
+      "clientId": 83,
+      "clientName": "MNHN"
+    },
+    {
+      "clientId": 86,
+      "clientName": "AG2R LA MONDIALE"
+    },
+    {
+      "clientId": 87,
+      "clientName": "IMPRIMERIE NATIONALE"
+    },
+    {
+      "clientId": 89,
+      "clientName": "RSI"
+    },
+    {
+      "clientId": 91,
+      "clientName": "Canal Plus DSI"
+    },
+    {
+      "clientId": 93,
+      "clientName": "Pierre Fabre"
+    },
+    {
+      "clientId": 94,
+      "clientName": "SIGMA"
+    },
+    {
+      "clientId": 96,
+      "clientName": "NIETZSCHE"
+    },
+    {
+      "clientId": 101,
+      "clientName": "Easytrust"
+    },
+    {
+      "clientId": 106,
+      "clientName": "Promologis"
+    },
+    {
+      "clientId": 108,
+      "clientName": "APHP"
+    },
+    {
+      "clientId": 21,
+      "clientName": "Galeries Lafayette"
+    },
+    {
+      "clientId": 22,
+      "clientName": "Logement Français"
+    },
+    {
+      "clientId": 23,
+      "clientName": "Essilor"
+    },
+    {
+      "clientId": 29,
+      "clientName": "Dgac"
+    },
+    {
+      "clientId": 31,
+      "clientName": "Ifpen"
+    },
+    {
+      "clientId": 32,
+      "clientName": "CG31"
+    },
+    {
+      "clientId": 102,
+      "clientName": "ADSPACE"
+    },
+    {
+      "clientId": 38,
+      "clientName": "Yves Rocher"
+    },
+    {
+      "clientId": 45,
+      "clientName": "BRED"
+    },
+    {
+      "clientId": 113,
+      "clientName": "CH LA ROCHELLE"
+    },
+    {
+      "clientId": 52,
+      "clientName": "Harmonie Mutualité"
+    },
+    {
+      "clientId": 58,
+      "clientName": "Ratp"
+    },
+    {
+      "clientId": 61,
+      "clientName": "Easytrust On premise"
+    },
+    {
+      "clientId": 65,
+      "clientName": "CELINE"
+    },
+    {
+      "clientId": 66,
+      "clientName": "Completel"
+    },
+    {
+      "clientId": 68,
+      "clientName": "MBD-SAFRAN"
+    },
+    {
+      "clientId": 81,
+      "clientName": "First Bank"
+    },
+    {
+      "clientId": 72,
+      "clientName": "Blue Chip Technologies"
+    },
+    {
+      "clientId": 74,
+      "clientName": "ADP"
+    },
+    {
+      "clientId": 99,
+      "clientName": "Bouygues Telecom"
+    },
+    {
+      "clientId": 107,
+      "clientName": "ANTARGAZ"
+    },
+    {
+      "clientId": 109,
+      "clientName": "VICTOR"
+    },
+    {
+      "clientId": 112,
+      "clientName": "Mr Bricolage"
+    },
+    {
+      "clientId": 114,
+      "clientName": "Pickup"
+    },
+    {
+      "clientId": 115,
+      "clientName": "SBE"
+    }
+    ]
+    

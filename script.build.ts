@@ -6,7 +6,7 @@
  *      version YOUR_VERSION - version param need to be followed by version value
  *      ignore - if present and if version param present, it will change varsion and ignore build
  */
-import {config} from './src/app/common/common-config';
+import {config} from './src/app/config/common-config';
 
 const exec = require('child_process').exec;
 const fs = require('fs');

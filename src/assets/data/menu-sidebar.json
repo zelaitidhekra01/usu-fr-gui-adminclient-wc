@@ -1,0 +1,78 @@
+{
+    "disabled": {
+      "localhost": [],
+      "dev2": [],
+      "dev1": []
+    },
+    "menu": [
+      {
+        "label": "SIDEBAR.SETTINGS.LABEL",
+        "id": "settings",
+        "url": "settings",
+        "isExpanded": true,
+        "icon": "fa fa-cog",
+        "subMenu": [
+          {
+            "label": "SIDEBAR.SETTINGS.COMPANY.LABEL",
+            "url": "company",
+            "parent": "settings",
+            "active": true
+          },
+          {
+            "label": "SIDEBAR.SETTINGS.USERS.LABEL",
+            "url": "users",
+            "parent": "settings",
+            "active": false
+          },
+          {
+            "label": "SIDEBAR.SETTINGS.ORGANIZATIONS.LABEL",
+            "url": "organizations",
+            "parent": "settings",
+            "active": false
+          },
+          {
+            "label": "SIDEBAR.SETTINGS.SCENARIO.LABEL",
+            "url": "scenario",
+            "parent": "settings",
+            "active": false
+          },
+          {
+            "label": "SIDEBAR.SETTINGS.DEFAULT.CONNECTION.LABEL",
+            "url": "default-connection",
+            "parent": "settings",
+            "active": false
+          },
+          {
+            "label": "SIDEBAR.SETTINGS.COLLECTOR.SCHEDULE.LABEL",
+            "url": "collector-schedule",
+            "parent": "settings",
+            "active": false
+          },
+          {
+            "label": "SIDEBAR.SETTINGS.HEARTBEAT.PARAMETER.LABEL",
+            "url": "smartcollector-frequency",
+            "parent": "settings",
+            "active": false
+          }
+        ]
+      }
+    ],
+    "menu2": [
+      {
+        "label": "SIDEBAR.DIAGNOSTIC.LABEL",
+        "id": "diagnostic",
+        "url": "diagnostic",
+        "isExpanded": true,
+        "icon": "fa fa-file-medical-alt",
+        "subMenu": [
+          {
+            "label": "SIDEBAR.DIAGNOSTIC.COLLECT.ISSUES.LABEL",
+            "url": "collect-issues",
+            "parent": "diagnostic",
+            "active": true
+          }
+        ]
+      }
+    ]
+  }
+  

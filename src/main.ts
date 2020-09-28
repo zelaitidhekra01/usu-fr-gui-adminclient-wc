@@ -12,10 +12,8 @@ if (environment.production) {
 
 KeycloakService.init()
   .then(() => {
-    console.log('======> KeycloakService / main.ts / then');
     platformBrowserDynamic().bootstrapModule(AppModule)
   })
   .catch(e => {
-    console.log('======> KeycloakService / main.ts / error:', e);
     console.log(e);
   });
