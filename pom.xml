@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>fr.usu</groupId>
+    <artifactId>usu-fr-settings</artifactId>
+    <version>5.0.0</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>fr.usu.gui</groupId>
+  <artifactId>usu-fr-client</artifactId>
+  <version>5.13.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <version.wildfly.plugin>1.2.1.Final</version.wildfly.plugin>
+    <version.maven.war.plugin>2.6</version.maven.war.plugin>
+    <sonar.scanner.version>3.3.0.603</sonar.scanner.version>
+  </properties>
+
+  <dependencies>
+    <!-- SonarQube -->
+    <dependency>
+      <groupId>org.sonarsource.scanner.maven</groupId>
+      <artifactId>sonar-maven-plugin</artifactId>
+      <version>${sonar.scanner.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${version.maven.war.plugin}</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>${version.wildfly.plugin}</version>
+        <configuration>
+          <skip>false</skip>
+          <domain>
+            <server-groups>
+              <server-group>${wildfly.server.group}</server-group>
+            </server-groups>
+          </domain>
+          <name>${project.artifactId}.${project.packaging}</name>
+          <runtimeName>${project.artifactId}.${project.packaging}</runtimeName>
+          <protocol>${wildfly.protocol}</protocol>
+          <hostname>${wildfly.hostname}</hostname>
+          <port>${wildfly.port}</port>
+          <username>${wildfly.username}</username>
+          <password>${wildfly.password}</password>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+        <version>1.0-m5.1</version>
+        <configuration>
+          <username>${env.GIT_USERNAME}</username>
+          <password>${env.GIT_PASSWORD}</password>
+          <flowInitContext>
+            <masterBranchName>master</masterBranchName>
+            <developBranchName>develop</developBranchName>
+            <featureBranchPrefix>feature/</featureBranchPrefix>
+            <releaseBranchPrefix>release/</releaseBranchPrefix>
+            <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+            <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
+          </flowInitContext>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <!-- ********************************* * MAVEN Profiles ********************************* -->
+  <profiles>
+    <profile>
+      <id>development</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <!-- default wildfly plugin values for dev in domain mode -->
+        <wildfly.protocol>http-remoting</wildfly.protocol>
+        <wildfly.hostname>127.0.0.1</wildfly.hostname>
+        <wildfly.port>9990</wildfly.port>
+        <wildfly.server.group>main-server-group</wildfly.server.group>
+        <wildfly.username>easytrust</wildfly.username>
+        <wildfly.password>changeme2016</wildfly.password>
+        <!--sonar.sources>app,test,node_modules/usu-fr-gui-commons</sonar.sources-->
+      </properties>
+    </profile>
+
+    <!-- * Development profile * (This profile can be overriden in child
+      modules POMs) -->
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <wildfly.protocol>https-remoting</wildfly.protocol>
+        <wildfly.hostname>dev1.aspera-cloud.com</wildfly.hostname>
+        <wildfly.port>9100</wildfly.port>
+        <wildfly.server.group>smartcollect-apps</wildfly.server.group>
+        <wildfly.username>${env.WILDFLY_USERNAME}</wildfly.username>
+        <wildfly.password>${env.WILDFLY_PASSWORD}</wildfly.password>
+        <!-- URL to sonar server. Default value is http://localhost:9000 -->
+        <sonar.host.url>http://dev2.aspera-cloud.com:9800</sonar.host.url>
+        <sonar.sources>node_modules/usu-fr-gui-commons</sonar.sources>
+      </properties>
+    </profile>
+
+    <!-- * Integration profile * (This profile can be overriden in child
+            modules POMs) -->
+    <profile>
+      <id>integ</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <wildfly.protocol>https-remoting</wildfly.protocol>
+        <wildfly.hostname>dev2.aspera-cloud.com</wildfly.hostname>
+        <wildfly.port>9100</wildfly.port>
+        <wildfly.server.group>smartcollect-apps</wildfly.server.group>
+        <wildfly.username>${env.WILDFLY_USERNAME}</wildfly.username>
+        <wildfly.password>${env.WILDFLY_PASSWORD}</wildfly.password>
+        <!-- URL to sonar server. Default value is http://localhost:9000 -->
+        <sonar.host.url>http://dev2.aspera-cloud.com:9800</sonar.host.url>
+        <sonar.sources>node_modules/usu-fr-gui-commons</sonar.sources>
+      </properties>
+    </profile>
+
+    <!-- * Pre Production profile * (This profile can be overriden in child
+            modules POMs) -->
+    <profile>
+      <id>preprod</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <wildfly.protocol>https-remoting</wildfly.protocol>
+        <wildfly.hostname>qa.aspera-cloud.com</wildfly.hostname>
+        <wildfly.port>9100</wildfly.port>
+        <wildfly.server.group>smartcollect-apps</wildfly.server.group>
+        <wildfly.username>${env.WILDFLY_USERNAME}</wildfly.username>
+        <wildfly.password>${env.WILDFLY_PASSWORD}</wildfly.password>
+        <!-- INTEG/UNIT tests isolation : JUST INTEG TESTS here (skip UNIT TESTS) -->
+        <skip.integration.tests>false</skip.integration.tests>
+        <skip.unit.tests>true</skip.unit.tests>
+      </properties>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Artifactory Central</name>
+      <url>https://console.aspera-cloud.com/artifactory/libs-release</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>releases</id>
+      <name>Artifactory libs-release repository group</name>
+      <url>https://console.aspera-cloud.com/artifactory/libs-release-locale</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>snapshots</id>
+      <name>Artifactory libs-snapshot repository group</name>
+      <url>https://console.aspera-cloud.com/artifactory/libs-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
+  <!-- Used when using maven's deploy goal -->
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>Aspera USU France Internal Release Repository</name>
+      <url>https://console.aspera-cloud.com/artifactory/libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Aspera USU France Internal Snapshots Repository</name>
+      <url>https://console.aspera-cloud.com/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>plugins.releases</id>
+      <url>https://console.aspera-cloud.com/artifactory/plugins-release</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+    <pluginRepository>
+      <id>plugins.snapshot</id>
+      <url>https://console.aspera-cloud.com/artifactory/plugins-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>

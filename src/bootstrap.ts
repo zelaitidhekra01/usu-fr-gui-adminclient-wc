@@ -22,8 +22,10 @@ export default function(keycloak) {
         onLoad: 'login-required',
         responseMode: 'query'
     }).success(function(res) {
+        console.log("====> res:", res);
         successCallback(keycloak);
     }).error(function(err) {
+        console.log("====> err:", err);
         console.error('err', err);
     });
 

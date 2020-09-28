@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {KeycloakService } from './keycloak/keycloak.service';
+import {KeycloakService } from '../node_modules/usu-fr-gui-commons/keycloak/';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
