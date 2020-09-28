@@ -31,7 +31,7 @@
     "@ngx-cache/core": "6.0.0-rc.1",
     "@ngx-translate/core": "9.1.1",
     "@ngx-translate/http-loader": "3.0.1",
-    "@swimlane/ngx-datatable": "13.0.1",
+    "@swimlane/ngx-datatable": "^17.0.0",
     "@types/lodash": "4.14.110",
     "@usu/angular-components": "^1.0.0",
     "@usu/fonts": "^1.0.0",
@@ -47,7 +47,7 @@
     "keycloak-js": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "usu-fr-gui-commons": "git+https://5dc13b2e43e68b7856bd18bebefa0d54708fd369:x-oauth-basic@github.com/usu-fr/usu-fr-gui-commons.git#develop",
+    "usu-fr-gui-commons": "git+https://5dc13b2e43e68b7856bd18bebefa0d54708fd369:x-oauth-basic@github.com/usu-fr/usu-fr-gui-commons.git#migration-wc",
     "webpack": "^4.44.2",
     "zone.js": "~0.10.2"
   },
