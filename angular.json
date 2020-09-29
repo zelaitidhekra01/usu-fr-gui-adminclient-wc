@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/ihm/admin/",
             "allowedCommonJsDependencies": [
               "lodash",
               "rxjs-compat"

@@ -37,7 +37,7 @@
     "@usu/fonts": "^1.0.0",
     "@usu/themes": "^1.0.0",
     "@usu/theming-engine": "^1.0.0",
-    "angular-web-storage": "3.0.0",
+    "angular-web-storage": "^10.0.0",
     "core-js": "2.5.7",
     "element-resize-event": "3.0.1",
     "exec": "0.2.1",
