@@ -4,7 +4,7 @@ import {KeycloakService } from '../node_modules/usu-fr-gui-commons/keycloak/';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { from } from 'rxjs';
+
 
 if (environment.production) {
   enableProdMode();
