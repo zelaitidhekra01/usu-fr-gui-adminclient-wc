@@ -29,33 +29,12 @@ export class MainComponent extends BaseMain implements OnInit, OnDestroy {
     orangeThemeControl = new FormControl(false);
 
     constructor(
-        private themingService: UsuThemingService,
         private easyContent: EasyContent,
         private companiesService: CompaniesService,
         private easyUser: EasyUser,
         protected easyCompanyApp: EasyCompanyApp){
 
-        super(easyCompanyApp);
-
-        this.themingService.enableTheme('more-u-theme');
-        this.themingService.enableTheme('more-u-orange-theme');
-        this.themingService.useTheme('more-u-theme');
-    
-        this.orangeThemeControl.valueChanges.subscribe((orangeActive) => {
-          if (orangeActive) {
-            this.themingService.useTheme('more-u-orange-theme');
-          } else {
-            this.themingService.useTheme('more-u-theme');
-          }
-        });
-    }
-   
-
-  
-  
-    public addName(): void {
-      this.names.push(this.currentName);
-      this.currentName = '';
+        super(easyCompanyApp); 
     }
     ngOnInit(): void {
         super.ngOnInit();

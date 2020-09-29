@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { ReferentialsService } from 'usu-fr-gui-commons/services';
+import { CompanyComponent } from '../company/company.component';
 
 import {MainComponent} from './main.component';
 
@@ -15,6 +16,10 @@ export const routes: Routes = [
       component: MainComponent,
       //resolve: {data: ReferentialsService},
       children: [
+        {
+          path: 'company',
+          component: CompanyComponent
+        }
       ]
     }
 
