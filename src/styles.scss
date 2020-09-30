@@ -23,15 +23,15 @@ $usu-input-enabled-themes: (more-u-theme, more-u-orange-theme);
   @include usu-global-styling();
 }
 
-@font-face {
-  font-family: open-sans;
-  src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Regular.ttf");
-}
+// @font-face {
+//   font-family: open-sans;
+//   src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Regular.ttf");
+// }
 
-@font-face {
-  font-family: open-sans-semibold;
-  src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Semibold.ttf");
-}
+// @font-face {
+//   font-family: open-sans-semibold;
+//   src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Semibold.ttf");
+// }
 
 // css for mat dialog
 mat-dialog-container.mat-dialog-container {

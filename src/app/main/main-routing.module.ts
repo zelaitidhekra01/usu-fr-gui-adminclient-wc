@@ -14,7 +14,7 @@ export const routes: Routes = [
     {
       path: 'settings',
       component: MainComponent,
-      //resolve: {data: ReferentialsService},
+      resolve: {data: ReferentialsService},
       children: [
         {
           path: 'company',

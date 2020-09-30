@@ -3,6 +3,7 @@ import { MainComponent } from './main.component';
 import {GuiCommonModule} from 'usu-fr-gui-commons/gui-common.module';
 import { MainRoutingModule } from './main-routing.module';
 import { CompanyComponent } from '../company/company.component';
+import { UsuAngularComponentsModule } from '@usu/angular-components';
 
 
 
@@ -10,11 +11,11 @@ import { CompanyComponent } from '../company/company.component';
     declarations: [
       MainComponent,
       CompanyComponent
-    
     ],
     imports: [
       MainRoutingModule, 
-      GuiCommonModule
+      GuiCommonModule,
+      UsuAngularComponentsModule.forRoot(),
     ],
     entryComponents: [],
     providers: []
