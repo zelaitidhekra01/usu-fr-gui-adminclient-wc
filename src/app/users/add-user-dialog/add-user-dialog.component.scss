@@ -9,21 +9,7 @@ mat-toolbar {
   h1, h2, h3, h4 {
     color: white;
   }
-  .main{
-    position:relative; /* ADD THIS! */
-    height: 200px;
-    //background-color: #111210;
-  }
-  .iner{
-    position:absolute; /* ADD THIS! */
-    width: 100px;
-    height: 100px;
-    //background-color: #34cb2f;
-    bottom: 0;
-    /* some centering now... */
-    left:50%;
-    transform: translateX(-50%); -webkit-transform: translateX(-50%);
-  }
+  
 
   div.mat-icon-button {
     mat-icon {
@@ -34,6 +20,20 @@ mat-toolbar {
 }
 .box{
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.main{
+  position:relative; /* ADD THIS! */
+  height: 200px;
+  width: 50%
+}
+.under{
+  display: flex;
+  flex-direction: column;
+}
+.error-field{
+  color: red; 
+  font-size: 12px; 
+  margin-top: -6px;
 }
 .remove-border{
   border: solid 2px rgba(0,0,0,.12) !important;
