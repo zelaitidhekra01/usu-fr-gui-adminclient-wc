@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { ReferentialsService } from 'usu-fr-gui-commons/services';
 import { CompanyComponent } from '../company/company.component';
+import { UsersComponent } from '../users/users.component';
 
 import {MainComponent} from './main.component';
 
@@ -19,6 +20,10 @@ export const routes: Routes = [
         {
           path: 'company',
           component: CompanyComponent
+        },
+        {
+          path: 'users',
+          component: UsersComponent
         }
       ]
     }

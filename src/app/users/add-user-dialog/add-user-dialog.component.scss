@@ -1,0 +1,123 @@
+@import "../../../../node_modules/usu-fr-gui-commons/style/_theme-variables.scss";
+
+mat-toolbar {
+  background-color: var(--usu-button-primary-background, #004f9f);
+
+  h2 {
+    color: $black-color-light;
+  }
+  h1, h2, h3, h4 {
+    color: white;
+  }
+  .main{
+    position:relative; /* ADD THIS! */
+    height: 200px;
+    //background-color: #111210;
+  }
+  .iner{
+    position:absolute; /* ADD THIS! */
+    width: 100px;
+    height: 100px;
+    //background-color: #34cb2f;
+    bottom: 0;
+    /* some centering now... */
+    left:50%;
+    transform: translateX(-50%); -webkit-transform: translateX(-50%);
+  }
+
+  div.mat-icon-button {
+    mat-icon {
+      color: white;
+      padding: 8px;
+    }
+  }
+}
+.box{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.remove-border{
+  border: solid 2px rgba(0,0,0,.12) !important;
+}
+
+button[mat-raised-button] {
+  background-color: $button-bg-color;
+  //color: $button-color;
+
+  &.select-all-button {
+    //margin-left: 2px;
+    margin-bottom: 12px;
+    color: $button-color;
+  }
+}
+
+::ng-deep mat-progress-bar {
+  .mat-progress-bar-buffer {
+    background-color: $font-color-dark;
+  }
+
+  .mat-progress-bar-fill::after {
+    background-color: rgb($second-color-r, $second-color-g, $second-color-b);
+  }
+}
+
+.progress-bar-message {
+  text-align: center;
+  color: $font-color;
+  margin-bottom: 10px;
+}
+
+.bottom-button-bar {
+  margin: 5px 23px 20px 0px;
+  
+}
+
+.easy-light-table {
+  padding: 0px;
+
+  mat-icon {
+    color: $main-color;
+    line-height: 40px;
+  }
+
+  .easy-light-table-header {
+    color: $font-color;
+    font-weight: bold;
+    font-size: 17px;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+  }
+  .easy-light-table-rows {
+    height: 200px;
+    overflow-y: scroll;
+
+    .easy-light-table-row {
+      padding-left: 5px;
+      height: 40px;
+
+      .easy-light-table-cell-right {
+        text-align: right;
+        padding-right: 5px;
+      }
+
+      div {
+        line-height: 46px;
+
+      }
+
+      &.odd {
+        background-color: var(--usu-form-field-background);
+      }
+
+      .disabled.mat-icon-button {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+  }
+
+}
+
+//var(--usu-button-primary-background, #004f9f )
+
+
+

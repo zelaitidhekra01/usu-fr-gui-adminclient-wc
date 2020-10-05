@@ -1,10 +1,15 @@
 $usu-input-enabled-themes: (more-u-theme, more-u-orange-theme);
+
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/index.scss';
+
 @import '~@swimlane/ngx-datatable/themes/material.scss';
 @import '~@swimlane/ngx-datatable/themes/dark.scss';
 @import '~@swimlane/ngx-datatable/themes/bootstrap.scss';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
+
+
+
 @import '../node_modules/usu-fr-gui-commons/style/_smartcollect.scss';
 @import "../node_modules/usu-fr-gui-commons/style/_ngx-datatable-sc.scss";
 @import "../node_modules/usu-fr-gui-commons/style/_material-sc";

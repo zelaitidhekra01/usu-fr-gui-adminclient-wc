@@ -1,17 +1,21 @@
 <app-breadcrumb></app-breadcrumb>
 
 <form #companyForm="ngForm">
-  <div class="tabs-container" style="width: 98%!important">
+  <div class="tabs-container" style="width: 97%!important">
     <section class="tab-admin-company" fxLayout="column">
       <div fxLayout="row" class="table-row mat-field-spacing-sc">
         <usu-form-field fxFlex="50">
           <label slot="label">{{"LABEL_NAME" | translate}}</label>
-          <usu-input slot="input" type="text" name="name" [(ngModel)]="companyInfo.name" #name="ngModel"></usu-input>
+          <usu-input slot="input" 
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          type="text" name="name" [(ngModel)]="companyInfo.name" #name="ngModel"></usu-input>
         </usu-form-field>
         <div fxFlex="2"></div>
         <usu-form-field fxFlex="50">
           <label slot="label">{{"LABEL_WEBSITE" | translate}}</label>
-          <usu-input slot="input" type="text" #websiteUrl="ngModel" [(ngModel)]="companyInfo.websiteUrl"
+          <usu-input slot="input"
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          type="text" #websiteUrl="ngModel" [(ngModel)]="companyInfo.websiteUrl"
             name="websiteUrl" [pattern]="regexUrl"></usu-input>
         </usu-form-field>
       </div>
@@ -21,7 +25,7 @@
       <div fxLayout="row" class="table-row mat-field-spacing-sc">
         <usu-form-field fxFlex="50">
           <label slot="label">{{"LABEL_LANGUAGE" | translate}}</label>
-          <select [(ngModel)]="companyInfo.languageId" slot="input" class="su-custom-form-element-active"
+          <select [(ngModel)]="companyInfo.languageId" slot="input" class="usu-custom-form-element-active remove-border"
             name="selectlangue">
             <option *ngFor="let language of languages" [value]="language.identifier">
               {{language.value}}
@@ -33,7 +37,9 @@
         <br />
         <usu-form-field fxFlex="50">
           <label slot="label">{{"PLAT.COMPANY.WELCOME.LABEL" | translate}}</label>
-          <usu-input slot="input" type="text" [(ngModel)]="companyInfo.welcomeMessage" name="welcomeMessage">
+          <usu-input 
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          slot="input" type="text" [(ngModel)]="companyInfo.welcomeMessage" name="welcomeMessage">
           </usu-input>
         </usu-form-field>
       </div>
@@ -41,7 +47,9 @@
       <div fxLayout="row" class="table-row mat-field-spacing-sc">
         <usu-form-field fxFlex="100">
           <label slot="label">{{"LABEL_COMMENT" | translate}}</label>
-          <usu-textarea slot="input" name="comments" [(ngModel)]="companyInfo.comments"></usu-textarea>
+          <usu-textarea
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          slot="input" name="comments" [(ngModel)]="companyInfo.comments"></usu-textarea>
           <!-- <textarea class="label-area-sc" [(ngModel)]="companyInfo.comments" matInput name="comments"></textarea> -->
         </usu-form-field>
       </div>
@@ -49,7 +57,7 @@
 
     <section class="tab-admin-company" fxLayout="column" >
       <div fxLayout="row">
-        <h3> {{"SIDEBAR.SOFTWARE.CATALOG.OFFER.LABEL" | translate}}</h3>
+        <h2 style="border-bottom: 2px solid var(--usu-text-h2-color);"> {{"SIDEBAR.SOFTWARE.CATALOG.OFFER.LABEL" | translate}}</h2>
       </div>
       <div fxLayout="row" *ngFor="let offer of offers">
         <usu-checkbox [checked]=companyOffersList[offer.identifier]?.isChecked style="padding-top: 20px" fxFlex="20"
@@ -60,6 +68,7 @@
         <usu-form-field *ngIf="companyOffersList[offer.identifier]?.isChecked" fxFlex="25">
           <label slot="label">{{"NB_SERVERS" | translate}}</label>
           <usu-input
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default"
            slot="input"
            name="nbServer_{{offer.identifier}}" 
            disabled="true"
@@ -68,28 +77,34 @@
       </div>
       <div fxFlex="2"></div>
       <div fxLayout="row">
-        <h3> {{"LABEL_LICENSE_FOR_ORACLE_PARAMETERS" | translate}}</h3>
+        <h2 style="border-bottom: 2px solid var(--usu-text-h2-color);"> {{"LABEL_LICENSE_FOR_ORACLE_PARAMETERS" | translate}}</h2>
       </div>
       <br>
       <div fxLayout="row" class="table-row mat-field-spacing-sc">
         <usu-form-field fxFlex="50">
           <label slot="label">{{"CONTRACT_TARGET" | translate}}</label>
-          <usu-input slot="input" type="number" [(ngModel)]="contracts" name="contracts" #contract="ngModel" min="0"
+          <usu-input 
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          slot="input" type="number" [(ngModel)]="contracts" name="contracts" #contract="ngModel" min="0"
             required></usu-input>
         </usu-form-field>
         <div fxFlex="2"></div>
         <br>
         <usu-form-field fxFlex="50">
           <label slot="label">{{"SERVER_TARGET" | translate}}</label>
-          <usu-input slot="input" type="number" [(ngModel)]="completnessServer" name="completnessServer"
+          <usu-input 
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          slot="input" type="number" [(ngModel)]="completnessServer" name="completnessServer"
             #server="ngModel" min="0" required></usu-input>
         </usu-form-field>
       </div>
       <br>
-      <div fxLayout="row">
+      <div fxLayout="row" class="table-row mat-field-spacing-sc">
         <usu-form-field fxFlex="50">
           <label slot="label">{{"DATABSE_INSTANCE_TARGET" | translate}}</label>
-          <usu-input slot="input" type="number" [(ngModel)]="completnessInstance" name="completnessInstance"
+          <usu-input
+          class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+          slot="input" type="number" [(ngModel)]="completnessInstance" name="completnessInstance"
             #instance="ngModel" min="0" required></usu-input>
         </usu-form-field>
       </div>

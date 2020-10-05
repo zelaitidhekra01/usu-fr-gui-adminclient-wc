@@ -41,13 +41,10 @@ export class CompanyComponent implements OnInit {
       private easyGlobals: EasyGlobals,
       private companyService: CompanyService,
       private offerService: OfferService,
-      private referentialService: EasyReferentials,
-      themingService: UsuThemingService)
+      private referentialService: EasyReferentials)
       {
 
-        themingService.enableTheme('more-u-theme');
-        themingService.enableTheme('more-u-orange-theme');
-        themingService.useTheme('more-u-theme')
+      
     
       }
 

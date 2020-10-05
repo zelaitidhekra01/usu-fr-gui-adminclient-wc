@@ -1,0 +1,276 @@
+<mat-toolbar>
+  <h2>{{dialogTitle | translate}}</h2>
+  <div fxFlex="1 1 auto"></div>
+  <div class="mat-icon-button" id="close-user-dialog" (click)="closeDialog()"
+       aria-label="Close dialog">
+    <usu-icon type="close" size="regular" class="hydrated"></usu-icon>
+  </div>
+</mat-toolbar>
+<div>
+  <mat-expansion-panel [expanded]="openUserDetailPane" style="margin: 0 !important;">
+    <mat-expansion-panel-header>
+      <h3>{{"ADC.USER.DETAILS" | translate}}</h3>
+    </mat-expansion-panel-header>
+    <form #userForm="ngForm">
+      <div class="tabs-container" style="width: 96% !important;">
+        <section class="tab-admin-company" fxLayout="column">
+          <div fxLayout="row" class="table-row mat-field-spacing-sc">
+
+            <div class="main">
+              <div style="display: flex; flex-direction: column;">
+                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+                  <label slot="label">{{'LABEL_FIRSTNAME' | translate}}</label>
+    
+                  <usu-input slot="input" 
+                  class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                  type="text" 
+                  #firstName="ngModel"
+                  [(ngModel)]="user.preferences.firstName"
+                  name="firstName"
+                  [disabled]="isCreate && creationSuccess"
+                  required></usu-input>
+    
+                </usu-form-field>
+                <span style ="color: red;font-size: 12px; margin-top: -6px;" *ngIf="(firstName.errors?.required && firstName.touched)">{{"LABEL_REQUIRED" | translate}}</span>
+              </div>
+            </div>
+            
+            <div fxFlex="2%"></div>
+
+              <usu-form-field fxFlex="50">
+                <label slot="label">{{'LABEL_LASTNAME' | translate}}</label>
+  
+                <usu-input slot="input"
+                class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border" 
+                type="text" 
+                #lastName="ngModel"
+                [(ngModel)]="user.preferences.lastName"
+                name="lastName"
+                [disabled]="isCreate && creationSuccess"
+                required></usu-input>
+  
+              </usu-form-field>
+              <!-- <span style ="color: red;font-size: 10px" *ngIf="(lastName.errors?.required && lastName.touched)">{{"LABEL_REQUIRED" | translate}}</span> -->
+          </div>
+          <br>
+          <br>
+          <br>
+          <div fxLayout="row" class="table-row mat-field-spacing-sc">
+
+            <usu-form-field fxFlex="50">
+              <label slot="label">{{'LABEL_LOGIN' | translate}}</label>
+              <usu-input slot="input" 
+              class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+              type="text" 
+              #login="ngModel"
+              [(ngModel)]="user.username"
+              name="login"
+              [disabled]="!isCreate || (isCreate && creationSuccess)"
+              pattern="^[a-z0-9._%-]+$"
+              required></usu-input> 
+            </usu-form-field>
+
+            <!-- <mat-form-field fxFlex>
+              <label>{{'LABEL_LOGIN' | translate}}</label>
+              <input matInput [(ngModel)]="user.username" name="login"
+                     [disabled]="!isCreate || (isCreate && creationSuccess)" #login="ngModel" required pattern="^[a-z0-9._%-]+$">
+              <mat-error *ngIf="login.errors?.required">{{"LABEL_REQUIRED" | translate}}</mat-error>
+              <mat-error *ngIf="login.errors?.pattern">
+                {{"LABEL_LOWER_CASE_ERROR" | translate}}
+              </mat-error>
+            </mat-form-field> -->
+            <div fxFlex="2%"></div>
+
+            <usu-form-field fxFlex="50">
+              <label slot="label">{{'LABEL_EMAIL' | translate}}</label>
+              <usu-input slot="input" 
+              class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+              type="text" 
+              #email="ngModel" 
+              [(ngModel)]="user.preferences.email"
+              name="email"
+              [disabled]="isCreate && creationSuccess"
+              [pattern]="regexEmail"
+              required></usu-input>
+
+            </usu-form-field>
+
+            <!-- <mat-form-field fxFlex>
+              <label>{{'LABEL_EMAIL' | translate}}</label>
+              <input matInput [(ngModel)]="user.preferences.email" name="email"
+                     [disabled]="isCreate && creationSuccess" required #email="ngModel" [pattern]="regexEmail">
+
+              <mat-error *ngIf="email.errors?.required">{{"LABEL_REQUIRED" | translate}}</mat-error>
+              <mat-error *ngIf="email.errors?.pattern">{{"LABEL_EMAIL_ERROR" | translate}}</mat-error>
+            </mat-form-field> -->
+          </div>
+          <br>
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" *ngIf="isCreate">
+           
+            <usu-form-field fxFlex="50">
+              <label slot="label">{{'LABEL_PASSWORD' | translate}}</label>
+              <usu-input slot="input" 
+              class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+              type="password" 
+              #new_password="ngModel"
+              [(ngModel)]="user.preferences.password"
+              [pattern]="regexPassword" 
+              name="new_password"
+              [disabled]="isCreate && creationSuccess"
+              required></usu-input>
+
+            </usu-form-field>
+           
+            <!-- <mat-form-field fxFlex>
+              <label>{{'LABEL_PASSWORD' | translate}}</label>
+              <input matInput [(ngModel)]="user.preferences.password" [pattern]="regexPassword" name="new_password"
+                     type="password" [disabled]="isCreate && creationSuccess" #new_password="ngModel"
+                     required>
+              <mat-error *ngIf="new_password.errors?.required">{{"LABEL_REQUIRED" | translate}}</mat-error>
+              <mat-error *ngIf="new_password.errors?.pattern">{{"ERROR_PASSWORD_FORMAT" | translate}}</mat-error>
+            </mat-form-field> -->
+            <div fxFlex="2%"></div>
+
+            <usu-form-field fxFlex="50">
+              <label slot="label">{{'LABEL_PASSWORD_CONFIRM' | translate}}</label>
+              <usu-input slot="input" 
+              class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+              type="password" 
+              #passwordConfirm="ngModel"
+              [(ngModel)]="user.preferences.passwordConfirm"
+              [pattern]="user.preferences.password"
+              name="passwordConfirm" 
+              [disabled]="isCreate && creationSuccess"
+              required></usu-input>
+
+            </usu-form-field>
+
+            <!-- <mat-form-field fxFlex>
+              <label>{{'LABEL_PASSWORD_CONFIRM' | translate}}</label>
+              <input matInput [(ngModel)]="user.preferences.passwordConfirm"
+                     [pattern]="user.preferences.password"
+                     [disabled]="isCreate && creationSuccess" #passwordConfirm="ngModel" required
+                     name="passwordConfirm" type="password">
+              <mat-error *ngIf="passwordConfirm.errors?.required">{{"LABEL_REQUIRED" | translate}}</mat-error>
+              <mat-error *ngIf="passwordConfirm.errors?.pattern">{{"ERROR_PASSWORD_MATCH" | translate}}</mat-error>
+            </mat-form-field> -->
+          </div>
+          <br>
+          <div fxLayout="row" class="table-row mat-field-spacing-sc">
+
+            <usu-form-field fxFlex="49">
+              <label slot="label">{{'LABEL_PHONE' | translate}}</label>
+              <usu-input slot="input" 
+              class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+              type="text" 
+              #phone="ngModel"
+              [(ngModel)]="user.preferences.phone"
+              [pattern]="regexPhoneNumber"
+              name="phone"
+              [disabled]="isCreate && creationSuccess"
+              required></usu-input>
+
+            </usu-form-field>
+            <!-- <mat-form-field fxFlex="49" floatLabel="{{'LABEL_PHONE' | translate}}">
+              <label>{{'LABEL_PHONE' | translate}}</label>
+
+              <input matInput [(ngModel)]="user.preferences.phone" name="phone"
+                     [disabled]="isCreate && creationSuccess" [pattern]="regexPhoneNumber" #phone="ngModel">
+              <mat-error *ngIf="phone.errors?.pattern">{{"ERROR_PHONE" | translate}}</mat-error>
+            </mat-form-field> -->
+          </div>
+        </section>
+      </div>
+    </form>
+
+
+    <div fxLayout="column">
+      <div *ngIf="sendingData">
+        <div class="progress-bar-message">{{"LABEL_CREATING_USER" | translate}}</div>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div fxLayout="row" style="margin-top: 20px; margin-bottom: 20px">
+        <div fxFlex></div>
+        <usu-button [disabled]="userForm.invalid || sendingData || (isCreate && creationSuccess)"
+
+        (click)="saveUser(user, userForm)" class="hydrated smartcollect">  {{"LABEL_SAVE" | translate}}</usu-button>
+      </div>
+      <!-- <div fxLayout="row" style="margin-top: 20px; margin-bottom: 20px">
+        <div fxFlex></div>
+        <button mat-raised-button class="smartcollect"
+                [disabled]="userForm.invalid || sendingData || (isCreate && creationSuccess)"
+                (click)="saveUser(user, userForm)">
+          {{"LABEL_SAVE" | translate}}
+        </button>
+      </div> -->
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="openProfilePane" [disabled]="profilesPaneDisabled" style="margin: 0 !important;">
+    <mat-expansion-panel-header>
+      <h3>{{"LABEL_PROFILES" | translate}}</h3>
+    </mat-expansion-panel-header>
+    <br>
+    <div fxLayout="row" easy-double-list style="padding: 0 24px 24px!important;">
+      <div fxFlex>
+        <div>
+          <usu-button [disabled]="profiles.length === 0" (click)="addAllUserProfiles()" aria-label="add all profiles"
+          class="hydrated smartcollect select-all-button">{{"LABEL_ADD_ALL_PROFILES" | translate}}</usu-button>
+        </div>
+        <br>
+
+        <usu-card class="easy-light-table box">
+          <span slot="title" class="easy-light-table-header">
+            {{"LABEL_AVAILABLE" | translate}}
+          </span>
+          <div slot="content" easy-double-list-left class="easy-light-table-rows" scroll-to-bottom="profiles.length">
+            <div fxLayout="row" *ngFor="let profile of profiles; index as index" class="easy-light-table-row" 
+                  [ngClass]="{'odd': index%2===0}">
+               <div fxFlex>{{profile.name}}</div>
+                  <div fxFlex="10" class="mat-icon-button" (click)="addUserProfile(profile)">
+                    <usu-icon type="angle-angle-right" size="regular" class="hydrated"></usu-icon>
+                  </div>
+               </div>
+            </div>
+        </usu-card>   
+      </div>
+      <div fxFlex="20px"></div>
+      <div fxFlex>
+
+        <div>
+          <usu-button [disabled]="userProfiles.length === 0 || (userProfiles.length === 1 && userProfiles[0].name === 'Admin')"
+          (click)="removeAllUserProfiles()" aria-label="remove all profiles"
+          class="hydrated smartcollect select-all-button">{{"LABEL_REMOVE_ALL_PROFILES" | translate}}</usu-button>
+        </div>
+        <br> 
+
+
+        <usu-card class="easy-light-table associated-profiles box">
+          <span slot="title" class="easy-light-table-header">
+            {{"LABEL_ASSOCIATED" | translate}}
+          </span>
+          <div slot="content" easy-double-list-right class="easy-light-table-rows" scroll-to-bottom="userProfiles.length">
+            <div fxLayout="row" *ngFor="let prof of userProfiles; index as index" class="easy-light-table-row" 
+                 [ngClass]="{'odd': index%2===0}">
+    
+                  <div fxFlex="10" class="mat-icon-button" (click)="removeUserProfile(prof)">
+                    <usu-icon type="angle-angle-left" size="regular" class="hydrated"></usu-icon>
+                  </div>
+                  <div fxFlex class="easy-light-table-cell-right">{{prof.name}}</div>
+               </div>
+            </div>
+        </usu-card>   
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</div>
+<br>
+<div fxLayout="row" class="bottom-button-bar" >
+  <span fxFlex></span>
+  <usu-button [disabled]="sendingData" [mat-dialog-close]  aria-label="Cancel"
+  class="hydrated smartcollect">{{"LABEL_CLOSE" | translate}}</usu-button>
+  <!-- <button mat-raised-button class="smartcollect" [disabled]="sendingData" [mat-dialog-close]
+          aria-label="Cancel">
+    {{"LABEL_CLOSE" | translate}}
+  </button> -->
+</div>
