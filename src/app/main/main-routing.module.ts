@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { ReferentialsService } from 'usu-fr-gui-commons/services';
 import { CompanyComponent } from '../company/company.component';
 import { OrganizationsComponent } from '../organizations/organizations.component';
+import { ScenarioComponent } from '../scenario/scenario.component';
 import { UsersComponent } from '../users/users.component';
 
 import {MainComponent} from './main.component';
@@ -29,6 +30,10 @@ export const routes: Routes = [
         {
           path: 'organizations',
           component: OrganizationsComponent
+        },
+        {
+          path: 'scenario',
+          component: ScenarioComponent
         }
       ]
     }

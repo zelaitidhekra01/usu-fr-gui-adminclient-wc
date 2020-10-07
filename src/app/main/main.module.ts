@@ -9,6 +9,7 @@ import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog
 import { OrganizationsComponent } from '../organizations/organizations.component';
 import { AddOrganizationDialogComponent } from '../organizations/add-organization-dialog/add-organization-dialog.component';
 import { AddOrganizationTypeDialogComponent } from '../organizations/add-organization-type-dialog/add-organization-type-dialog.component';
+import { ScenarioComponent } from '../scenario/scenario.component';
 
 
 
@@ -22,6 +23,7 @@ import { AddOrganizationTypeDialogComponent } from '../organizations/add-organiz
       AddOrganizationDialogComponent,
       AddOrganizationTypeDialogComponent,
       OrganizationsComponent,
+      ScenarioComponent
 
     ],
     imports: [
