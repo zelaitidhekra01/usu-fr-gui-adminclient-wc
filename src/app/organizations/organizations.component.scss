@@ -1,0 +1,22 @@
+@import "../../../node_modules/usu-fr-gui-commons/style/theme-variables";
+@import "../../../node_modules/usu-fr-gui-commons/style/mixins";
+
+:host {
+  overflow-y: auto;
+
+  ::ng-deep .datatable-header-cell-template-wrap input[type=text] {
+    width: 100%;
+  }
+
+  ::ng-deep .ngx-datatable.material .datatable-body .datatable-row-detail {
+    background: none;
+    padding: 20px 20px 0 20px;
+    .ngx-datatable.material {
+      box-shadow: none;
+    }
+  }
+
+  .bottom-grid-buttons {
+    margin-top: 10px;
+  }
+}

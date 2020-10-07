@@ -6,6 +6,9 @@ import { CompanyComponent } from '../company/company.component';
 import { UsuAngularComponentsModule } from '@usu/angular-components';
 import { UsersComponent } from '../users/users.component';
 import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog.component';
+import { OrganizationsComponent } from '../organizations/organizations.component';
+import { AddOrganizationDialogComponent } from '../organizations/add-organization-dialog/add-organization-dialog.component';
+import { AddOrganizationTypeDialogComponent } from '../organizations/add-organization-type-dialog/add-organization-type-dialog.component';
 
 
 
@@ -16,6 +19,9 @@ import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog
       CompanyComponent,
       UsersComponent,
       AddUserDialogComponent,
+      AddOrganizationDialogComponent,
+      AddOrganizationTypeDialogComponent,
+      OrganizationsComponent,
 
     ],
     imports: [
@@ -25,6 +31,9 @@ import { AddUserDialogComponent } from '../users/add-user-dialog/add-user-dialog
     ],
     entryComponents: [
       AddUserDialogComponent,
+      AddOrganizationDialogComponent,
+      AddOrganizationTypeDialogComponent
+
     ],
     providers: []
       

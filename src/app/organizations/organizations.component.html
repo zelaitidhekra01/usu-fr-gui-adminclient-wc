@@ -1,0 +1,255 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div class="easy-page" [ngClass]="{displayed : this.displayed}">
+  <div fxLayout="column" *ngIf="organisationTypesRows!==undefined">
+
+    <div fxLayout="column" class="block">
+      <div fxFlex="100">
+        <h3>{{"ADC.ORGANIZATION.TYPE.GRID.TITLE" | translate}}</h3>
+        <ngx-datatable
+          #organizationType
+          class='material striped table-height-double-sc'
+          [rows]="organisationTypesRows"
+          [columnMode]="'force'"
+          [headerHeight]="easyGrid.getHeaderHeight()"
+          [footerHeight]="0"
+          [rowHeight]="easyGrid.getLineHeight()"
+          [scrollbarV]="true"
+          [scrollbarH]="false"
+          [loadingIndicator]="loadingIndicator"
+          [reorderable]="reorderable"
+          [swapColumns]="swapColumns"
+          [messages]="easyGrid.getTableMessages()"
+          [rowClass]="easyGrid.addToDeleteRowClass">
+
+          <ngx-datatable-column name="{{'LABEL_NAME' | translate}}" prop="name">
+            <ng-template #searchTpl let-column="column" let-sort="sortFn"
+                         ngx-datatable-header-template>
+              <div class="datatable-header-cell-wrapper">
+                    <span class="datatable-header-cell-label draggable" (click)="sort()">
+                      {{column.name}}
+                    </span>
+              </div>
+              <input type='text' (keyup)='updateFilter($event, column, "organisationTypesRows")'/>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{'ADC.ORGANIZATION.TYPE.RANK' | translate}}" prop="rank">
+            <ng-template #searchTpl let-column="column" let-sort="sortFn"
+                         ngx-datatable-header-template>
+              <div class="datatable-header-cell-wrapper">
+                    <span class="datatable-header-cell-label draggable" (click)="sort()">
+                      {{column.name}}
+                    </span>
+              </div>
+              <input type='text' (keyup)='updateFilter($event, column, "organisationTypesRows")'/>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="{{'LABEL_ACTIONS' | translate}}" width="100">
+            <ng-template ngx-datatable-cell-template let-row="row">
+              <div class="center grid-buttons">
+                  <span title="{{'PLAT.USERS.EDIT.INFO' | translate}}" (click)="!row.toBeDeleted && editType(row)"
+                        matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}">
+                    <i class="fa fa-pencil-alt"></i>
+                  </span>
+                <span class="" title="{{'PLAT.USERS.DELETE.INFO' | translate}}"
+                      (click)="!row.toBeDeleted && deleteType(row)" matTooltip="{{'LABEL_PENCIL_DELETE' | translate}}">
+                     <i class="fa fa-trash" aria-hidden="true"></i>
+                  </span>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+      <div fxLayout="100" class="bottom-grid-buttons">
+        <div fxFlex></div>
+        <usu-button style="margin-top: 12px" color="primary" class="hydrated smartcollect" (click)="addType()" aria-label="Add organization type">
+            <usu-icon  type="add" slot="icon-before" size="regular"  class="hydrated"></usu-icon>
+            {{ "LABEL_ADD" | translate }}</usu-button>
+      </div>
+    </div>
+
+    <div fxLayout="column" class="block">
+      <section fxFlex="100" class="no-organizations flexParent" md-whiteframe="2"
+               *ngIf="organisationTypesRows.length > 0 && organisationsRows===undefined">
+        <div fxLayout="column">
+        <usu-button style="margin-top: 12px" color="primary" class="hydrated smartcollect" (click)="addOrganization()" aria-label="Add organization">
+            <usu-icon  type="add" slot="icon-before" size="regular"  class="hydrated"></usu-icon>
+            {{ "LABEL_ADD" | translate }}</usu-button>
+        </div>
+      </section>
+      <div fxFlex="100" *ngIf="organisationsRows!==undefined">
+        <div fxLayout="row">
+          <h3>{{"SIDEBAR.SETTINGS.ORGANIZATIONS.LABEL" | translate}}</h3>
+        </div>
+        <div fxLayout="column">
+          <div fxFlex="100">
+            <ngx-datatable
+              #organizationTable
+              class='material striped table-height-double-sc'
+              [rows]="organisationsRows"
+              [columnMode]="'force'"
+              [headerHeight]="easyGrid.getHeaderHeight()"
+              [footerHeight]="0"
+              [rowHeight]="easyGrid.getLineHeight()"
+              [scrollbarV]="true"
+              [scrollbarH]="false"
+              [messages]="easyGrid.getTableMessages()"
+              [rowClass]="easyGrid.addToDeleteRowClass">
+
+              <ngx-datatable-row-detail #myDetailRow>
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+
+                  <ngx-datatable
+                    class='material striped table-height-xsm-sc'
+                    [rows]="organisationChildRows.get(row.identifier)"
+                    [columnMode]="'force'"
+                    [headerHeight]="0"
+                    [footerHeight]="0"
+                    [rowHeight]="30"
+                    [scrollbarV]="true"
+                    [scrollbarH]="false"
+                    [messages]="easyGrid.getTableMessages()">
+
+
+                    <ngx-datatable-column
+                      [width]="50"
+                      [resizeable]="false"
+                      [sortable]="false"
+                      [draggable]="false"
+                      [canAutoResize]="false">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column prop="name">
+                      <ng-template let-value="value" ngx-datatable-cell-template>
+                        <i class="fas fa-arrow-right" style="margin-right: 5px"></i>{{value}}
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="typeName">
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column prop="parentName">
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column width="100">
+                      <ng-template ngx-datatable-cell-template let-row="row">
+                        <div class="grid-buttons">
+                            <span title="{{'PLAT.USERS.EDIT.INFO' | translate}}"
+                                  (click)="!row.toBeDeleted && updateOrganization(row)"
+                                  matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}">
+                              <i class="fa fa-pencil-alt"></i>
+                            </span>
+                          <span class="" title="{{'PLAT.USERS.DELETE.INFO' | translate}}"
+                                (click)="!row.toBeDeleted && deleteOrganization(row)"
+                                matTooltip="{{'LABEL_PENCIL_DELETE' | translate}}">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                      </ng-template>
+                    </ngx-datatable-column>
+                  </ngx-datatable>
+
+                </ng-template>
+              </ngx-datatable-row-detail>
+
+              <ngx-datatable-column
+                [width]="50"
+                [resizeable]="false"
+                [sortable]="false"
+                [draggable]="false"
+                [canAutoResize]="false"
+                prop="identifier"
+                name="">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <a *ngIf="organisationChildRows.get(row.identifier) !== undefined"
+                     href="javascript:void(0)"
+                     title="Expand/Collapse Row"
+                     (click)="toggleExpandRow(row)">
+                    <div *ngIf="expanded"><i class="fas fa-minus-square"></i>XXX</div>
+                    <div *ngIf="!expanded"><usu-icon type="add" size="regular" class="hydrated"></usu-icon>XXX</div>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'LABEL_NAME' | translate}}" prop="name">
+                <ng-template #searchTpl let-column="column" let-sort="sortFn"
+                             ngx-datatable-header-template>
+                  <div class="datatable-header-cell-wrapper">
+                    <span class="datatable-header-cell-label draggable" (click)="sort()">
+                      {{column.name}}
+                    </span>
+                  </div>
+                  <input type='text' (keyup)='organizationUpdateFilter($event, column, "filteredOrgs")'/>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'LABEL_TYPE' | translate}}" prop="typeName">
+                <ng-template #searchTpl let-column="column" let-sort="sortFn"
+                             ngx-datatable-header-template>
+                  <div class="datatable-header-cell-wrapper">
+                    <span class="datatable-header-cell-label draggable" (click)="sort()">
+                      {{column.name}}
+                    </span>
+                  </div>
+                  <input type='text' (keyup)='organizationUpdateFilter($event, column, "filteredOrgs")'/>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'ADC.ORGANIZATION.PARENT' | translate}}" prop="parentName">
+                <ng-template #searchTpl let-column="column" let-sort="sortFn"
+                             ngx-datatable-header-template>
+                  <div class="datatable-header-cell-wrapper">
+                    <span class="datatable-header-cell-label draggable" (click)="sort()">
+                      {{column.name}}
+                    </span>
+                  </div>
+                  <input type='text' (keyup)='organizationUpdateFilter($event, column, "filteredOrgs")'/>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'LABEL_ACTIONS' | translate}}" width="100">
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  <div class="center grid-buttons">
+                    <span (click)="!row.toBeDeleted && updateOrganization(row)"
+                          matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}">
+                          <i class="fa fa-pencil-alt"></i>
+                      <!-- <i class="fa fa-pencil-alt"></i> -->
+                    </span>
+                    <span (click)="!row.toBeDeleted && deleteOrganization(row)"
+                          matTooltip="{{'LABEL_PENCIL_DELETE' | translate}}">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+          <div layout="row" class="bottom-grid-buttons">
+            <div fxFlex></div>
+            <usu-button style="margin-top: 12px" color="primary" 
+            class="hydrated smartcollect" (click)="addOrganization()"
+            [disabled]="!organisationTypesRows || organisationTypesRows.length === 0"
+            aria-label="Add organization type">
+                <usu-icon  type="add" slot="icon-before" size="regular"  class="hydrated"></usu-icon>
+                {{ "LABEL_ADD" | translate }}</usu-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section fxLayout="row" class="no-types flexParent" md-whiteframe="2" *ngIf="organisationTypesRows===undefined">
+    <div class="flexChild" fxLayout="column">
+      <p>
+        {{"ADC.ORGANIZATION.BEFORE.CREATE.INFO" | translate}}
+      </p>
+
+      <usu-button style="margin-top: 12px" color="primary" 
+      class="hydrated smartcollect" (click)="addType()" 
+      aria-label="Add organization type">
+          <usu-icon  type="add" slot="icon-before" size="regular"  class="hydrated"></usu-icon>
+          {{ "LABEL_ADD" | translate }}</usu-button>
+    </div>
+  </section>
+</div>
+

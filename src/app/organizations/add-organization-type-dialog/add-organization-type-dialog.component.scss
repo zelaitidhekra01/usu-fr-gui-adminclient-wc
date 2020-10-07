@@ -1,0 +1,42 @@
+@import "../../../../node_modules/usu-fr-gui-commons/style/_theme-variables.scss";
+
+:host {
+
+  mat-toolbar {
+    background-color: var(--usu-button-primary-background, #004f9f);
+
+    h2 {
+      color: $black-color-light;
+    }
+    h1, h2, h3, h4 {
+      color: white;
+      ;
+    }
+
+    div.mat-icon-button {
+      mat-icon {
+        color: white;
+        padding: 8px;
+      }
+    }
+  }
+  .container {
+    padding: 20px;
+  }
+  ::ng-deep mat-progress-bar {
+    .mat-progress-bar-buffer {
+      background-color: $font-color-dark;
+    }
+
+    .mat-progress-bar-fill::after {
+      background-color: rgb($second-color-r, $second-color-g, $second-color-b);
+    }
+  }
+
+  .progress-bar-message {
+    text-align: center;
+    color: $font-color;
+    margin-bottom: 10px;
+  }
+
+}

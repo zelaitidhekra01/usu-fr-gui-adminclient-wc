@@ -1,0 +1,75 @@
+<div id="organizationDialog">
+    <mat-toolbar>
+      <h2>{{dialogTitle | translate}}</h2>
+      <div fxFlex="1 1 auto"></div>
+      <div class="mat-icon-button" id="close-user-dialog" (click)="closeDialog()"
+           aria-label="Close dialog">
+           <usu-icon type="close" size="regular" class="hydrated close-icon">close</usu-icon>
+      </div>
+    </mat-toolbar>
+  
+    <div class="container">
+      <form #orgaForm="ngForm">
+        <div class="tabs-container" style="margin:0rem!important;">
+          <section class="tab-admin-company" fxLayout="column">
+            <div fxLayout="row" class="table-row mat-field-spacing-sc">
+              <div class="main" style="width: 100%;">
+                <div class="under">
+                  <usu-form-field fxFlex="100">
+                    <label slot="label">{{'LABEL_NAME' | translate}}</label>
+                    <usu-input slot="input"
+                      class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                      type="text" [(ngModel)]="form.name" name="name" #name="ngModel"
+                      [disabled]="isCreate && creationSuccess" required></usu-input>
+                  </usu-form-field>
+                  <span class="error-field" style="margin-top: -17px!important;"
+                    *ngIf="(name.errors?.required && name.touched)">{{"LABEL_REQUIRED" | translate}}</span>
+                </div>
+              </div>
+            </div>
+            <br>
+    
+            <div fxLayout="row" class="table-row mat-field-spacing-sc">
+            
+                  <usu-form-field status="regular" class="hydrated" fxFlex="100"> 
+                    <label slot="label">{{"ADC.ORGANIZATION.TYPE" | translate}}</label>
+                    <select slot="input" class="usu-custom-form-element-hovered"
+                     [(ngModel)]="form.typeId"
+                            name="typeId" #typeId="ngModel" required (selectionChange)="changeOrgType($event)"> 
+                      <option *ngFor="let item of types" [value]="item.identifier"> {{item.name}}</option>
+                    </select>
+                     </usu-form-field>
+            </div>
+            <br>
+            <div fxLayout="row" class="table-row mat-field-spacing-sc">
+              <usu-form-field status="regular" class="hydrated" fxFlex="100"> 
+                <label slot="label">{{"ADC.ORGANIZATION.PARENT" | translate}}</label>
+                <select slot="input" class="usu-custom-form-element-hovered"
+                [(ngModel)]="form.parentId"
+                        name="parentId" #parentId="ngModel" (selectionChange)="changeParent($event)"> 
+                  <option *ngFor="let item of parents" [value]="item.identifier"> {{item.name}}</option>
+                </select>
+                 </usu-form-field>
+            </div>
+          </section>
+        </div>
+      </form>
+      <div fxLayout="column">
+        <div *ngIf="sendingData">
+          <div class="progress-bar-message"></div>
+          <usu-progress-indicator id="progress-bar-dynamic" shape="bar" role="progressbar" aria-live="polite"
+          aria-busy="true" aria-valuenow="0" class="hydrated"></usu-progress-indicator>
+        </div>
+        <mat-dialog-actions fxLayout="row" style="margin-top: 20px; margin-bottom: -15px">
+          <div fxFlex></div>
+
+          <usu-button class="hydrated smartcollect margin-left-8" (click)="saveForm(form, orgaForm)"
+          [disabled]="sendingData || (isCreate && creationSuccess)"> {{"LABEL_SAVE" | translate}}</usu-button>
+        
+          <usu-button class="hydrated smartcollect margin-left-8" style="margin-left: 11px;" (click)="closeDialog()">
+          {{"LABEL_CANCEL" | translate}}</usu-button>
+        </mat-dialog-actions>
+      </div>
+    </div>
+  </div>
+  
