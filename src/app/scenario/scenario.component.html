@@ -1,1 +1,120 @@
-<h1>Senario Component </h1>
+<app-breadcrumb></app-breadcrumb>
+<div class="easy-page displayed">
+  <div style="background-color: white; padding: 20px; border-radius: 5px;">
+    <form [formGroup]="scenarioGroup">
+      <div class="accordion-div content-container">
+        <mat-accordion multi="true" class="vAccordion--default">
+          <div class="tabs-container-scenario">
+            <!-- Presentation panel -->
+            <div fxFlex="100" class="card ">
+
+              <section class="pane-presentation table-row">
+                <div formGroupName="generalInformation">
+                    <div fxLayout="row" class="font-color-dark"> 
+                      <div class="section-scenario">
+                        <div fxFlex="50" >
+                          <usu-form-field class="section-field-scenario">
+                            <label slot="label" class="section-label">{{ 'LABEL_SCENARIO' | translate }}:</label>
+                            <select slot="input" (change)="getScenarioById($event)" [(value)]="currentScenarioId">
+                            <option *ngFor="let currentValue of scenarioList" [value]="currentValue.identifier" >{{ currentValue.name }}</option>
+                            </select>
+                          </usu-form-field> 
+                        </div>
+                        <div fxFlex="10"></div>
+                        <div fxFlex="50" style="margin-left: 16px;">
+                          <usu-checkbox color="primary" class="hydrated font-color-dark-boolean"
+                            formControlName="isDefaultScenario" (change)="defaultHasChange($event)">
+                            {{'LABEL_SCENARIO_IS_DEFAULT' | translate }}
+                          </usu-checkbox>
+                          <usu-checkbox color="primary" class="hydrated font-color-dark-boolean"
+                            *ngIf="scenarioGroup.get('generalInformation').get('isStandardScenario').value"
+                            formControlName="isStandardScenario" class="font-color-dark-boolean">
+                            {{ 'LABEL_SCENARIO_IS_STANDARD' | translate }}
+                          </usu-checkbox>
+                        </div>
+                      </div>
+                      <div fxFlex="100">
+                        <div fxLayout="column" class="desc-scenario" style="width: 100%;">
+                          <label style="margin-bottom: 15px;">{{ 'LABEL_SCENARIO_DESCRIPTION_1' | translate }}</label>
+                          <label style="margin-bottom: 15px;">{{ 'LABEL_SCENARIO_DESCRIPTION_2' | translate }}</label>
+                          <label style="margin-bottom: 15px;">{{ 'LABEL_SCENARIO_DESCRIPTION_3' | translate }}</label>
+                          <div fxFlex></div>
+                        </div>
+                      </div>
+                    </div>
+                
+                </div>
+              </section>
+
+            </div>
+
+            <div style="display: flex;flex-wrap: wrap;">
+              <!-- List of all boolean panel -->
+              <mat-expansion-panel *ngFor="let currentBooleanTechno of allBooleanTechno" [expanded]="true"
+                class="pane-scenario-odd table-row" style="margin: 16px 5px !important;">
+                <mat-expansion-panel-header class="header-border">
+                  <h3>{{ currentBooleanTechno | translate }}</h3>
+                </mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div formGroupName="boolean">
+                    <div fxLayout="row">
+                      <div fxLayout="column" fxFlex="50">
+                        <div *ngFor="let currentBoolean of booleanList" class="dependent-question" fxLayout="column">
+                          <usu-checkbox color="primary" class="hydrated font-color-dark-boolean"
+                            *ngIf="currentBoolean.techInfo.title === currentBooleanTechno"
+                            [formControlName]="currentBoolean.data.key" class="font-color-dark-boolean"
+                            [disabled]="scenarioGroup.get('generalInformation').get('isStandardScenario').value"
+                            (change)="verifyActivation()">
+                            {{ currentBoolean.data.nameLabelKey | translate }}
+                          </usu-checkbox>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel>
+
+              <!-- List of all enum panel -->
+              <mat-expansion-panel *ngFor="let currentEnumTechno of allEnumTechno" [expanded]="true"
+                class="pane-scenario-even table-row" style="margin: 16px 5px !important;">
+                <mat-expansion-panel-header class="header-border">
+                  <h3>{{ currentEnumTechno | translate}}</h3>
+                </mat-expansion-panel-header>
+                <mat-panel-description>
+                  <div formGroupName="enum" style="width: 100%;">
+                    <div *ngFor="let currentEnum of enumList" fxLayout="row">
+                      <div fxLayout="row" class="sub-center">
+                        <mat-label class="font-color-dark">{{ currentEnum.data.nameLabelKey | translate }}</mat-label>
+                        <div fxFlex></div>
+                        <mat-select [formControlName]="currentEnum.data.key"
+                          style="border-bottom: 1px solid grey; padding-bottom: 5px;" [value]="currentEnum.data.value"
+                          [disabled]="scenarioGroup.get('generalInformation').get('isStandardScenario').value">
+                          <mat-option *ngFor="let currentValue of currentEnum.data.optionsList"
+                            [value]="currentValue.value">{{ currentValue.label }}</mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
+                  </div>
+                </mat-panel-description>
+              </mat-expansion-panel>
+            </div>
+          </div>
+        </mat-accordion>
+        <mat-dialog-actions fxLayout="row" class="buttons">
+          <div fxFlex></div>
+          <usu-button style="margin-left: 12px;" class="hydrated smartcollect" (click)="updateScenario()" [disabled]="scenarioGroup.get('generalInformation').get('isStandardScenario').value &&
+          !scenarioGroup.get('generalInformation').get('isDefaultScenario').value"> {{'LABEL_SAVE' | translate}}
+          </usu-button>
+          <usu-button style="margin-left: 12px;" class="hydrated smartcollect" (click)="createScenario()">
+            {{'LABEL_SAVE_AS' | translate}}</usu-button>
+          <usu-button style="margin-left: 12px;" class="hydrated smartcollect" (click)="renameScenario()"
+            [disabled]="scenarioGroup.get('generalInformation').get('isStandardScenario').value">
+            {{'LABEL_RENAME' | translate}}</usu-button>
+          <usu-button style="margin-left: 12px;" class="hydrated smartcollect" (click)="removeScenario()"
+            [disabled]="scenarioGroup.get('generalInformation').get('isStandardScenario').value">
+            {{'LABEL_DELETE' | translate}}</usu-button>
+        </mat-dialog-actions>
+      </div>
+    </form>
+  </div>
+</div>

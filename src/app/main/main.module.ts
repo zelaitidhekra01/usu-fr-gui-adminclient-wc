@@ -10,6 +10,7 @@ import { OrganizationsComponent } from '../organizations/organizations.component
 import { AddOrganizationDialogComponent } from '../organizations/add-organization-dialog/add-organization-dialog.component';
 import { AddOrganizationTypeDialogComponent } from '../organizations/add-organization-type-dialog/add-organization-type-dialog.component';
 import { ScenarioComponent } from '../scenario/scenario.component';
+import { SaveAsDialogComponent } from '../scenario/save-as-dialog/save-as-dialog.component';
 
 
 
@@ -23,7 +24,8 @@ import { ScenarioComponent } from '../scenario/scenario.component';
       AddOrganizationDialogComponent,
       AddOrganizationTypeDialogComponent,
       OrganizationsComponent,
-      ScenarioComponent
+      ScenarioComponent,
+      SaveAsDialogComponent
 
     ],
     imports: [
@@ -34,7 +36,8 @@ import { ScenarioComponent } from '../scenario/scenario.component';
     entryComponents: [
       AddUserDialogComponent,
       AddOrganizationDialogComponent,
-      AddOrganizationTypeDialogComponent
+      AddOrganizationTypeDialogComponent,
+      SaveAsDialogComponent
 
     ],
     providers: []

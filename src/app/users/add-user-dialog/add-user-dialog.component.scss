@@ -22,9 +22,9 @@ mat-toolbar {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.remove-border{
-  border: solid 2px rgba(0,0,0,.12) !important;
-}
+// .remove-border{
+//   border: solid 2px rgba(0,0,0,.12) !important;
+// }
 
 button[mat-raised-button] {
   background-color: $button-bg-color;
