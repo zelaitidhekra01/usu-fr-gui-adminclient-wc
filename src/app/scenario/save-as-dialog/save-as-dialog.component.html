@@ -1,0 +1,45 @@
+<div id="saveAsDialog">
+    <mat-toolbar>
+        <h2>{{dialogTitle | translate}}</h2>
+        <div fxFlex="1 1 auto"></div>
+        <div class="mat-icon-button" id="close-user-dialog" (click)="closeDialog()"
+            aria-label="Close dialog">
+        <usu-icon type="close" size="regular" class="hydrated">close</usu-icon>
+        </div>
+    </mat-toolbar>
+    
+    <div class="container">
+        <form [formGroup]="saveAsGroup">
+        <div fxLayout="column">
+            <div class="main">
+                <div class="under">
+                <usu-form-field fxFlex="100">
+                    <label slot="label">{{"LABEL_NAME" | translate}}</label>
+                    <usu-input slot="input" formControlName="saveName" name="saveName"></usu-input>
+                </usu-form-field>
+                <div *ngIf="saveAsGroup.get('saveName').invalid && (saveAsGroup.get('saveName').dirty || saveAsGroup.get('saveName').touched)" style="margin-top: -18px;">
+                <span class="error-field"
+                *ngIf="saveAsGroup.get('saveName').errors.required">{{"LABEL_REQUIRED" | translate}}</span>
+                <span class="error-field"
+                *ngIf="saveAsGroup.get('saveName').errors.nameAlreadyExists">{{"LABEL_NAME_ALREADY_EXIST" | translate}}</span>
+                </div>
+               
+                </div>
+            </div>
+        </div>
+        </form>
+        <div fxLayout="column">
+        <mat-dialog-actions fxLayout="row" style="margin-top: 20px; margin-bottom: -15px;">
+            <div fxFlex></div>
+            <usu-button class="hydrated smartcollect" (click)="saveForm()"
+            [disabled]="!saveAsGroup.valid"> {{"LABEL_SAVE" | translate}}</usu-button>
+       
+          <usu-button class="hydrated smartcollect margin-left-8" style="margin-left: 11px;" (click)="closeDialog()">
+          {{'LABEL_CANCEL' | translate}}</usu-button>
+        
+        </mat-dialog-actions>
+        </div>
+    </div>
+    </div>
+    
+    
