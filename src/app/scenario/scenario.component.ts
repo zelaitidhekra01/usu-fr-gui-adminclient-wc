@@ -178,7 +178,7 @@ export class ScenarioComponent implements OnInit {
 
         this.booleanList = this._sortList(booleanElements);
         this.enumList = this._sortList(enumElements);
-
+    
         this.booleanList.forEach(current => {
             if (!this.allBooleanTechno.includes(current.techInfo.title)) {
                 this.allBooleanTechno.push(current.techInfo.title);

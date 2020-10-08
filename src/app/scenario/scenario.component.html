@@ -15,7 +15,7 @@
                         <div fxFlex="50" >
                           <usu-form-field class="section-field-scenario">
                             <label slot="label" class="section-label">{{ 'LABEL_SCENARIO' | translate }}:</label>
-                            <select slot="input" (change)="getScenarioById($event)" [(value)]="currentScenarioId">
+                            <select slot="input"  style="border-bottom: 2px solid var(--usu-button-primary-background, #004f9f);" (change)="getScenarioById($event)" [(value)]="currentScenarioId">
                             <option *ngFor="let currentValue of scenarioList" [value]="currentValue.identifier" >{{ currentValue.name }}</option>
                             </select>
                           </usu-form-field> 
@@ -76,7 +76,7 @@
 
               <!-- List of all enum panel -->
               <mat-expansion-panel *ngFor="let currentEnumTechno of allEnumTechno" [expanded]="true"
-                class="pane-scenario-even table-row" style="margin: 16px 5px !important;">
+                class="pane-scenario-even table-row" style="margin: 0 1px !important;" >
                 <mat-expansion-panel-header class="header-border">
                   <h3>{{ currentEnumTechno | translate}}</h3>
                 </mat-expansion-panel-header>
@@ -84,14 +84,17 @@
                   <div formGroupName="enum" style="width: 100%;">
                     <div *ngFor="let currentEnum of enumList" fxLayout="row">
                       <div fxLayout="row" class="sub-center">
-                        <mat-label class="font-color-dark">{{ currentEnum.data.nameLabelKey | translate }}</mat-label>
-                        <div fxFlex></div>
-                        <mat-select [formControlName]="currentEnum.data.key"
-                          style="border-bottom: 1px solid grey; padding-bottom: 5px;" [value]="currentEnum.data.value"
+                        <usu-form-field>
+                          <label slot="label" class="section-label">{{ currentEnum.data.nameLabelKey | translate }}</label>
+                          <div fxFlex></div>
+                          <select slot="input" [formControlName]="currentEnum.data.key"
+                           class="expansion-panel-select" [value]="currentEnum.data.value"
                           [disabled]="scenarioGroup.get('generalInformation').get('isStandardScenario').value">
-                          <mat-option *ngFor="let currentValue of currentEnum.data.optionsList"
-                            [value]="currentValue.value">{{ currentValue.label }}</mat-option>
-                        </mat-select>
+
+                          <option *ngFor="let currentValue of currentEnum.data.optionsList"
+                          [value]="currentValue.value">{{ currentValue.label }}</option>
+                          </select>
+                        </usu-form-field> 
                       </div>
                     </div>
                   </div>
