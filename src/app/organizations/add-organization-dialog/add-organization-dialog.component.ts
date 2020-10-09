@@ -73,13 +73,13 @@ export class AddOrganizationDialogComponent implements OnInit {
 
   changeOrgType = (type) => {
 
-    this.parents = this.easyOrganizations.getParentsByType(type.value, this.form.name);
-    this.form.parentId = null;
+    this.parents = this.easyOrganizations.getParentsByType(type.target.value, this.form.name);
+    this.form.parentId =  null;
     this.form.parentName = null;
   };
 
-  changeParent = (parent) => {
-    this.form.typeId = this.easyOrganizations.getOrganisationType(parent.value, this.form.typeId);
+  changeParent = (parent) => { 
+    this.form.typeId = this.easyOrganizations.getOrganisationType(parent.target.value, this.form.typeId);
   };
 
   _initDialog() {

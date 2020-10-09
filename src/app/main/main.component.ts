@@ -38,9 +38,6 @@ export class MainComponent extends BaseMain implements OnInit, OnDestroy {
     }
     ngOnInit(): void {
         super.ngOnInit();
-
-        console.log("====> Main Component");
-
     const companyId = this.easyCompanyApp.getCompanyId();
     if (companyId !== null) {
       this.companiesService.getById(companyId).subscribe(res => {

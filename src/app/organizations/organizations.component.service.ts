@@ -36,8 +36,7 @@ export class OrganizationsComponentService {
   getParentsByType(typeId, selectedOrg) {
     const parents = [];
     lodash.each(this.organizations, (org) => {
-
-      if (org.typeId === typeId && org.name !== selectedOrg && org.parentId === undefined) {
+      if (org.typeId == typeId && org.name !== selectedOrg && org.parentId === undefined) {
         parents.push(org);
       }
     });
@@ -51,7 +50,7 @@ export class OrganizationsComponentService {
 
     let type = null;
     lodash.each(this.organizations, (org) => {
-      if (org.identifier === orgName) {
+      if (org.identifier == orgName) {
         type = org.typeId;
       }
 

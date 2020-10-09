@@ -35,7 +35,7 @@
                     <label slot="label">{{"ADC.ORGANIZATION.TYPE" | translate}}</label>
                     <select slot="input" class="usu-custom-form-element-hovered"
                      [(ngModel)]="form.typeId"
-                            name="typeId" #typeId="ngModel" required (selectionChange)="changeOrgType($event)"> 
+                            name="typeId" #typeId="ngModel" required (change)="changeOrgType($event)"> 
                       <option *ngFor="let item of types" [value]="item.identifier"> {{item.name}}</option>
                     </select>
                      </usu-form-field>
@@ -44,9 +44,9 @@
             <div fxLayout="row" class="table-row mat-field-spacing-sc">
               <usu-form-field status="regular" class="hydrated" fxFlex="100"> 
                 <label slot="label">{{"ADC.ORGANIZATION.PARENT" | translate}}</label>
-                <select slot="input" class="usu-custom-form-element-hovered"
+                <select slot="input"  class="usu-custom-form-element-hovered"
                 [(ngModel)]="form.parentId"
-                        name="parentId" #parentId="ngModel" (selectionChange)="changeParent($event)"> 
+                        name="parentId" #parentId="ngModel"  (change)="changeParent($event)"> 
                   <option *ngFor="let item of parents" [value]="item.identifier"> {{item.name}}</option>
                 </select>
                  </usu-form-field>
