@@ -195,8 +195,6 @@ export class ScenarioComponent implements OnInit {
     };
     /** update scenario callback */
     _updateSuccess = () => {
-        console.log('update successful');
-
         if (this.scenarioGroup.get('generalInformation').get('isDefaultScenario').value) {
             this.scenarioGroup.get('generalInformation').get('isDefaultScenario').disable();
         }

@@ -67,7 +67,6 @@ export class CompanyComponent implements OnInit {
           }
         }
         this.companyOffersList = tmp;
-        console.log("===> _setOfferChecked()/ this.companyOffersList", this.companyOffersList);
       }
   
     }
