@@ -1,0 +1,25 @@
+@import "../../../node_modules/usu-fr-gui-commons/style/_theme-variables.scss";
+
+:host {
+
+  ::ng-deep .datatable-header-cell-template-wrap input[type=text] {
+    width: 100%;
+  }
+
+  .grid-buttons {
+    span {
+      margin-right: 10px;
+      cursor: pointer;
+
+      .svg-inline--fa {
+        color: var(--usu-button-primary-background, #004f9f);
+      }
+    }
+  }
+
+  .bottom-grid-buttons {
+    margin-top: 10px;
+  }
+
+}
+

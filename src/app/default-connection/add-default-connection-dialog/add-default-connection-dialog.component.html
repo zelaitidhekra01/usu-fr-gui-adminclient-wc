@@ -1,0 +1,101 @@
+<mat-toolbar>
+  <h2>{{dialogTitle | translate}}</h2>
+  <div fxFlex="1 1 auto"></div>
+  <div class="mat-icon-button" id="close-default-connection-dialog" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </div>
+</mat-toolbar>
+<div>
+  <mat-expansion-panel [expanded]="openDefaultConnectionDetailPane" id="defaultConnexionInfoPane"
+    style="margin: 0 !important;">
+    <form [formGroup]="defaultConnectionGroup" autocomplete="nope">
+      <input matInput autocomplete="false" type="password" style="display:none;">
+      <div class="tabs-container" style="margin: 2rem 0 1rem 0rem!important">
+        <section class="tab-admin-company" fxLayout="column">
+          <div *ngIf="isCreate" fxLayout="row" class="table-row mat-field-spacing-sc" style="margin-bottom: 30px;">
+            <div class="main" style="width: 100%;">
+              <div class="under">
+                <usu-form-field fxFlex style="margin: 0 !important;">
+                  <label slot="label">{{'LABEL_COLLECTION' | translate}}</label>
+                  <select slot="input" formControlName="refCollectorDto"
+                    class="usu-custom-form-element-active remove-border">
+                    <option *ngFor="let item of collectors" [value]="item.code">{{item.name}}</option>
+                  </select>
+                </usu-form-field>
+                <span class="error-field"
+                  *ngIf="(defaultConnectionGroup.get('refCollectorDto').errors?.required) && (defaultConnectionGroup.get('refCollectorDto').touched)">
+                  {{"LABEL_REQUIRED" | translate}}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!isCreate" fxLayout="row" class="table-row mat-field-spacing-sc" style="margin-bottom: 30px;">
+            <usu-form-field fxFlex style="margin: 0 !important;">
+              <label slot="label">{{'LABEL_COLLECTION' | translate}}</label>
+              <usu-input
+                class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                slot="input" type="text" [value]="defaultConnectionGroup.get('refCollectorDto').value.name" disabled>
+              </usu-input>
+            </usu-form-field>
+          </div>
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" style="margin-bottom: 30px;">
+            <div class="main" style="width: 100%;">
+              <div class="under">
+                <usu-form-field fxFlex style="margin: 0 !important;">
+                  <label slot="label">{{'LABEL_LOGIN' | translate}}</label>
+                  <usu-input
+                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    slot="input" type="text" formControlName="newLog_in" autocomplete="new-login"></usu-input>
+                </usu-form-field>
+                <span class="error-field"
+                  *ngIf="(defaultConnectionGroup.get('newLog_in').errors?.required) && (defaultConnectionGroup.get('newLog_in').touched)">{{"LABEL_REQUIRED" | translate}}</span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" style="margin-bottom: 30px;">
+            <div class="main" style="width: 100%;">
+              <div class="under">
+                <usu-form-field fxFlex="50" style="margin: 0 !important;">
+                  <label slot="label">{{'LABEL_PASSWORD' | translate}}</label>
+                  <usu-input
+                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    slot="input" type="text" formControlName="newPass_word" type="password" autocomplete="new-password">
+                  </usu-input>
+                </usu-form-field>
+                <span class="error-field"
+                  *ngIf="(defaultConnectionGroup.get('newPass_word').errors?.required)&&(defaultConnectionGroup.get('newPass_word').touched)">{{"LABEL_REQUIRED" | translate}}</span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" style="margin-bottom: 30px;">
+            <div class="main" style="width: 100%;">
+              <div class="under">
+                <usu-form-field fxFlex style="margin: 0 !important;">
+                  <label slot="label">{{'LABEL_PASSWORD_CONFIRM' | translate}}</label>
+                  <usu-input
+                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    slot="input" type="text" formControlName="confirmPassword" type="password"
+                    autocomplete="new-confirm-password"></usu-input>
+                </usu-form-field>
+                <span class="error-field"
+                  *ngIf="(defaultConnectionGroup.get('confirmPassword').errors?.required) && (defaultConnectionGroup.get('confirmPassword').touched)">
+                  {{"LABEL_REQUIRED" | translate}}</span>
+                <span class="error-field" *ngIf="(defaultConnectionGroup.get('confirmPassword').errors?.NotMatching)">
+                  {{"ERROR_PASSWORD_MATCH" | translate}}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </form>
+    <div fxLayout="column">
+      <mat-dialog-actions fxLayout="row" style="margin-top: 10px; margin-bottom: 10px;">
+        <div fxFlex></div>
+        <usu-button class="hydrated smartcollect" style="margin-right: 10px" (click)="saveDefaultConnection()"
+          [disabled]="!defaultConnectionGroup.valid"> {{"LABEL_SAVE" | translate}}</usu-button>
+
+        <usu-button aria-label="Cancel" class="hydrated smartcollect" (click)="closeDialog()" [disabled]="sendingData">
+          {{"LABEL_CANCEL" | translate}}</usu-button>
+      </mat-dialog-actions>
+    </div>
+  </mat-expansion-panel>
+</div>

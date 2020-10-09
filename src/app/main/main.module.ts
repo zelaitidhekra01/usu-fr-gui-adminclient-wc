@@ -12,6 +12,7 @@ import { AddOrganizationTypeDialogComponent } from '../organizations/add-organiz
 import { ScenarioComponent } from '../scenario/scenario.component';
 import { SaveAsDialogComponent } from '../scenario/save-as-dialog/save-as-dialog.component';
 import { DefaultConnectionComponent } from '../default-connection/default-connection.component';
+import { AddDefaultConnectionDialogComponent } from '../default-connection/add-default-connection-dialog/add-default-connection-dialog.component';
 
 
 
@@ -27,7 +28,8 @@ import { DefaultConnectionComponent } from '../default-connection/default-connec
       OrganizationsComponent,
       ScenarioComponent,
       SaveAsDialogComponent,
-      DefaultConnectionComponent
+      DefaultConnectionComponent,
+      AddDefaultConnectionDialogComponent
 
     ],
     imports: [
@@ -39,7 +41,8 @@ import { DefaultConnectionComponent } from '../default-connection/default-connec
       AddUserDialogComponent,
       AddOrganizationDialogComponent,
       AddOrganizationTypeDialogComponent,
-      SaveAsDialogComponent
+      SaveAsDialogComponent,
+      AddDefaultConnectionDialogComponent
 
     ],
     providers: []

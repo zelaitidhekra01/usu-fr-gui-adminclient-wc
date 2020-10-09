@@ -1,0 +1,25 @@
+@import "../../../../node_modules/usu-fr-gui-commons/style/_theme-variables.scss";
+
+mat-toolbar {
+  background-color: var(--usu-button-primary-background, #004f9f);
+
+  h2 {
+    color: white;
+  }
+  h1, h2, h3, h4 {
+    color:white;
+  }
+
+  div.mat-icon-button {
+    mat-icon {
+      color: white;
+      padding: 8px;
+    }
+  }
+}
+mat-form-field{
+  margin: 18px 0 0;
+}
+
+
+

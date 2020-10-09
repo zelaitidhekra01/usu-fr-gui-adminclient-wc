@@ -1,4 +1,54 @@
-
 <app-breadcrumb></app-breadcrumb>
+<div class="easy-page displayed">
+  <ngx-datatable #defaultConnection class='material striped table-height-sc' [rows]="rows" [columnMode]="'force'"
+    [headerHeight]="easyGrid.getHeaderHeight()" [footerHeight]="0" [rowHeight]="easyGrid.getLineHeight()"
+    [scrollbarV]="true" [scrollbarH]="false" [messages]="easyGrid.getTableMessages()"
+    [rowClass]="easyGrid.addToDeleteRowClass">
 
-<h1> start DefaultConnectionComponent</h1>
+    <ngx-datatable-column name="{{'LABEL_COLLECTION' | translate}}" prop="refCollectorDto.name">
+      <ng-template #searchTpl let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper">
+          <span class="datatable-header-cell-label draggable" (click)="sort()">
+            {{column.name}}
+          </span>
+        </div>
+        <input type='text' (keyup)='updateFilter($event, column)' />
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="{{'LABEL_LOGIN' | translate}}" prop="login">
+      <ng-template #searchTpl let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <div class="datatable-header-cell-wrapper">
+          <span class="datatable-header-cell-label draggable" (click)="sort()">
+            {{column.name}}
+          </span>
+        </div>
+        <input type='text' (keyup)='updateFilter($event, column)' />
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="{{'LABEL_ACTIONS' | translate}}" width="100">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div class="center grid-buttons">
+          <span title="{{'PLAT.EDIT.INFO' | translate}}" (click)="!row.toBeDeleted && editDefaultConnection(row)"
+            matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}">
+            <i class="fa fa-pencil-alt"></i>
+          </span>
+          <span class="" title="{{'LABEL_DELETE' | translate}}"
+            (click)="!row.toBeDeleted && deleteDefaultConnection(row)"
+            matTooltip="{{'LABEL_PENCIL_DELETE' | translate}}">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </span>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+
+  <div fxLayout="row" class="bottom-grid-buttons">
+    <div fxFlex></div>
+    <usu-button style="margin-top: 12px" color="primary" class="hydrated smartcollect" (click)="addDefaultConnection()"
+      aria-label="Submit button">
+      <usu-icon type="add" slot="icon-before" size="regular" class="hydrated"></usu-icon>{{ "LABEL_ADD" | translate }}
+    </usu-button>
+  </div>
+</div>
