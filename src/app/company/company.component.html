@@ -1,5 +1,4 @@
 <app-breadcrumb></app-breadcrumb>
-
 <form #companyForm="ngForm">
   <div class="tabs-container" style="width: 97%!important">
     <section class="tab-admin-company" fxLayout="column">
@@ -12,8 +11,8 @@
                 class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
                 type="text" name="name" [(ngModel)]="companyInfo.name" #name="ngModel" required></usu-input>
             </usu-form-field>
-            <span class="error-field" 
-            *ngIf="(name.errors?.required && name.touched)">{{"LABEL_REQUIRED" | translate}}
+            <span class="error-field"
+              *ngIf="((name.errors?.required) && (name.touched))">{{"LABEL_REQUIRED" | translate}}
             </span>
           </div>
         </div>
@@ -28,7 +27,7 @@
                 [pattern]="regexUrl"></usu-input>
             </usu-form-field>
             <span class="error-field"
-              *ngIf="(websiteUrl.errors?.pattern && websiteUrl.touched)">{{"ERROR_URL" | translate}}</span>
+              *ngIf="((websiteUrl.errors?.pattern) && (websiteUrl.touched))">{{"ERROR_URL" | translate}}</span>
           </div>
         </div>
       </div>
@@ -102,11 +101,12 @@
               <label slot="label">{{"CONTRACT_TARGET" | translate}}</label>
               <usu-input
                 class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
-                slot="input" type="number" [(ngModel)]="contracts" name="contracts" #contract="ngModel" min="0" required>
+                slot="input" type="number" [(ngModel)]="contracts" name="contracts" #contract="ngModel" min="0"
+                required>
               </usu-input>
             </usu-form-field>
             <span class="error-field"
-            *ngIf="(contract.errors?.required && contract.touched)">{{"LABEL_REQUIRED" | translate}} </span>
+              *ngIf="((contract.errors?.required )&& (contract.touched))">{{"LABEL_REQUIRED" | translate}} </span>
           </div>
         </div>
         <div fxFlex="2"></div>
@@ -121,7 +121,7 @@
                 min="0" required></usu-input>
             </usu-form-field>
             <span class="error-field"
-              *ngIf="(server.errors?.required && server.touched)">{{"LABEL_REQUIRED" | translate}} </span>
+              *ngIf="((server.errors?.required) && (server.touched))">{{"LABEL_REQUIRED" | translate}} </span>
           </div>
         </div>
       </div>
@@ -137,18 +137,21 @@
                 #instance="ngModel" min="0" required></usu-input>
             </usu-form-field>
             <span style="margin-top: -19px!important;" class="error-field"
-              *ngIf="(instance.errors?.required && instance.touched)">{{"LABEL_REQUIRED" | translate}} </span>
+              *ngIf="((instance.errors?.required) && (instance.touched))">{{"LABEL_REQUIRED" | translate}} </span>
           </div>
         </div>
       </div>
-
+      <br>
+      <br>
       <div fxLayout="row">
         <div fxFlex></div>
-        <usu-button [disabled]="companyForm.invalid" style="align-self: right" fxFlexAlign="right"
-          (click)="onClickSaveButton()" class="hydrated smartcollect">{{'LABEL_SAVE' | translate}}</usu-button>
+        <mat-dialog-actions fxLayout="row">
+          <div fxFlex></div>
+          <usu-button [disabled]="companyForm.invalid" class="hydrated smartcollect" (click)="onClickSaveButton()"
+            style="align-self: right" fxFlexAlign="right" aria-label="Cancel button"> {{"LABEL_SAVE" | translate}}
+          </usu-button>
+        </mat-dialog-actions>
       </div>
     </section>
-
-
   </div>
 </form>
