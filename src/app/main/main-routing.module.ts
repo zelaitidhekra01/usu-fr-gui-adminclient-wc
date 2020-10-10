@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { ReferentialsService } from 'usu-fr-gui-commons/services';
+import { CollectorScheduleComponent } from '../collector-schedule/collector-schedule.component';
 import { CompanyComponent } from '../company/company.component';
 import { DefaultConnectionComponent } from '../default-connection/default-connection.component';
 import { OrganizationsComponent } from '../organizations/organizations.component';
@@ -39,7 +40,12 @@ export const routes: Routes = [
         {
           path: 'default-connection',
           component: DefaultConnectionComponent
+        },
+        {
+          path: 'collector-schedule',
+          component: CollectorScheduleComponent
         }
+       
       ]
     }
 

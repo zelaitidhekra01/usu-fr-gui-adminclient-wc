@@ -13,6 +13,7 @@ import { ScenarioComponent } from '../scenario/scenario.component';
 import { SaveAsDialogComponent } from '../scenario/save-as-dialog/save-as-dialog.component';
 import { DefaultConnectionComponent } from '../default-connection/default-connection.component';
 import { AddDefaultConnectionDialogComponent } from '../default-connection/add-default-connection-dialog/add-default-connection-dialog.component';
+import { CollectorScheduleComponent } from '../collector-schedule/collector-schedule.component';
 
 
 
@@ -29,7 +30,8 @@ import { AddDefaultConnectionDialogComponent } from '../default-connection/add-d
       ScenarioComponent,
       SaveAsDialogComponent,
       DefaultConnectionComponent,
-      AddDefaultConnectionDialogComponent
+      AddDefaultConnectionDialogComponent,
+      CollectorScheduleComponent
 
     ],
     imports: [
