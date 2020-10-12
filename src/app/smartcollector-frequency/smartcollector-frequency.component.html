@@ -1,4 +1,44 @@
-
-
-
-<h1>Start SmartcollectorFrequencyComponent</h1>
+<app-breadcrumb></app-breadcrumb>
+<div class="easy-page displayed">
+  <div style="background-color: white; padding: 20px; border-radius: 5px;">
+    <form [formGroup]="scFrequencyGroup">
+      <div fxLayout="row" style="margin: 25px 0;">
+        <label class="frequency-label">{{ 'LABEL_FREQUENCY_HEARTBEAT' | translate }}</label>
+        <div fxFlex="1"></div>
+        <label class="frequency-minmax-value">{{minValue}}</label>
+        <mat-slider thumbLabel fxFlex="50" class="frequency-slider" [displayWith]="formatLabel" tickInterval="1"
+                    (change)="onChange($event)" [min]="minValue ? minValue : 2" [max]="maxValue ? maxValue : 480"
+                    value="value" formControlName="heartbeat">
+        </mat-slider>
+        <label class="frequency-minmax-value">{{maxValue}}</label>
+        <div fxFlex="1"></div>
+      </div>
+      <div fxLayout="row">
+        <label class="frequency-label">{{ 'LABEL_FREQUENCY_SEND_DATA' | translate }}</label>
+        <div fxFlex="1"></div>
+        <label class="frequency-minmax-value">{{minValue}}</label>
+        <mat-slider thumbLabel fxFlex="50" class="frequency-slider" [displayWith]="formatLabel" tickInterval="1"
+                    (change)="onChange($event)" [min]="minValue ? minValue : 2" [max]="maxValue ? maxValue : 480"
+                    value="value" formControlName="savedata">
+        </mat-slider>
+        <label class="frequency-minmax-value">{{maxValue}}</label>
+        <div fxFlex="1"></div>
+      </div>
+      <div style="margin-top: 25px;">
+        <div fxFlex></div>
+        <usu-button [disabled]="disableButton" class="hydrated smartcollect"
+        (click)="validateFrequency()"> {{"LABEL_SAVE" | translate}}
+      </usu-button>
+        <!-- <button mat-raised-button class="smartcollect" (click)="validateFrequency()" [disabled]="disableButton">
+          {{"LABEL_SAVE" | translate}}
+        </button> -->
+        <usu-button [disabled]="disableButton" class="hydrated smartcollect"
+        (click)="applyFrequency()" style="margin-left: 12px;"> {{"LABEL_APPLY" | translate}}
+      </usu-button>
+        <!-- <button mat-raised-button class="smartcollect" (click)="applyFrequency()">
+          {{"LABEL_APPLY" | translate}}
+        </button> -->
+      </div>
+    </form>
+  </div>
+</div>
