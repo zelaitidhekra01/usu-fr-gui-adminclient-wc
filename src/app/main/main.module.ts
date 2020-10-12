@@ -15,6 +15,7 @@ import { DefaultConnectionComponent } from '../default-connection/default-connec
 import { AddDefaultConnectionDialogComponent } from '../default-connection/add-default-connection-dialog/add-default-connection-dialog.component';
 import { CollectorScheduleComponent } from '../collector-schedule/collector-schedule.component';
 import { SmartcollectorFrequencyComponent } from '../smartcollector-frequency/smartcollector-frequency.component';
+import { ErrorLogComponent } from '../error-log/error-log.component';
 
 
 
@@ -33,7 +34,8 @@ import { SmartcollectorFrequencyComponent } from '../smartcollector-frequency/sm
       DefaultConnectionComponent,
       AddDefaultConnectionDialogComponent,
       CollectorScheduleComponent,
-      SmartcollectorFrequencyComponent
+      SmartcollectorFrequencyComponent,
+      ErrorLogComponent
 
     ],
     imports: [

@@ -10,6 +10,7 @@ import { UsersComponent } from '../users/users.component';
 import {SmartcollectorFrequencyComponent} from '../smartcollector-frequency/smartcollector-frequency.component';
 
 import {MainComponent} from './main.component';
+import { ErrorLogComponent } from '../error-log/error-log.component';
 
 export const routes: Routes = [
     {
@@ -49,6 +50,10 @@ export const routes: Routes = [
         {
           path: 'smartcollector-frequency',
           component: SmartcollectorFrequencyComponent
+        },
+        {
+          path: 'collect-issues',
+          component: ErrorLogComponent
         }
        
       ]

@@ -1,0 +1,67 @@
+@import "../../../node_modules/usu-fr-gui-commons/style/theme-variables";
+@import "../../../node_modules/usu-fr-gui-commons/style/mixins";
+
+:host {
+  overflow-y: auto;
+
+  .page-container {
+    margin: 15px;
+  }
+
+  .bold-date {
+    font-weight: bold;
+  }
+
+  ::ng-deep .datatable-header-cell-template-wrap input[type=text] {
+    width: 100%;
+  }
+
+  .breadcrumb-container {
+    margin: 15px;
+    font-size: 15px;
+
+    .name:first-letter {
+      text-transform: uppercase;
+      font-size: 30px;
+    }
+
+    i, svg {
+      margin-left: 10px;
+      margin-right: 5px;
+
+      &.icon-angle-right {
+        font-size: 10px;
+      }
+    }
+
+    span.home_icon {
+      float: left;
+      margin-right: 5px;
+      margin-top: -2px;
+    }
+  }
+
+  .grid-buttons {
+    span {
+      margin-right: 10px;
+      cursor: pointer;
+
+      .svg-inline--fa {
+        color: $main-color;
+      }
+    }
+  }
+
+  .bottom-grid-buttons {
+    margin-top: 10px;
+  }
+
+  *:focus, button:focus {
+    outline: none;
+  }
+
+  .grids-button {
+    text-align: center;
+    width: 250px;
+  }
+}
