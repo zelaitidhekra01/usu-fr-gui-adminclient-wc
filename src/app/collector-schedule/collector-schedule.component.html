@@ -3,25 +3,13 @@
 <div class="page-container">
   <div class="easy-page action-list" [ngClass]="{displayed : displayed}" fxLayout="column">
     <div class="grid-container">
-      <app-grid-settings [component]="this" [columns]="'columns'" [rowsLength]="rows.length"
-                         [gridIdx]="grid.apiIdx" [fileName]="'collector-schedule'"></app-grid-settings>
-      <ngx-datatable
-        #grid
-        class='material striped table-height-double-sc'
-        [rows]="rows"
-        [columnMode]="'force'"
-        [columns]="columns"
-        [headerHeight]="easyGrid.getHeaderHeight()"
-        [footerHeight]="0"
-        [rowHeight]="easyGrid.getLineHeight()"
-        [scrollbarV]="true"
-        [scrollbarH]="false"
-        [selectionType]="'single'"
-        [loadingIndicator]="isLoading"
-        [sorts]="[{prop: 'name', dir: 'asc'}]"
-        [externalSorting]="false"
-        [messages]="easyGrid.getTableMessages()"
-        [reorderable]="true">
+      <app-grid-settings [component]="this" [columns]="'columns'" [rowsLength]="rows.length" [gridIdx]="grid.apiIdx"
+        [fileName]="'collector-schedule'"></app-grid-settings>
+      <ngx-datatable #grid class='material striped table-height-double-sc' [rows]="rows" [columnMode]="'force'"
+        [columns]="columns" [headerHeight]="easyGrid.getHeaderHeight()" [footerHeight]="0"
+        [rowHeight]="easyGrid.getLineHeight()" [scrollbarV]="true" [scrollbarH]="false" [selectionType]="'single'"
+        [loadingIndicator]="isLoading" [sorts]="[{prop: 'name', dir: 'asc'}]" [externalSorting]="false"
+        [messages]="easyGrid.getTableMessages()" [reorderable]="true">
         <ng-template #idxTpl let-rowIndex="rowIndex + 1" let-row="row" ngx-datatable-cell-template>
           {{rowIndex}}
         </ng-template>
@@ -32,7 +20,7 @@
               {{column.name}}
             </span>
           </div>
-          <input type='text' style="width: 100%;" (keyup)='updateFilter($event, column)'/>
+          <input type='text' style="width: 100%;" (keyup)='updateFilter($event, column)' />
         </ng-template>
 
         <ng-template #cellTpl let-row="row" let-value="value" ngx-datatable-cell-template>
@@ -50,10 +38,9 @@
       <mat-accordion multi="true" class="vAccordion--default">
         <form [formGroup]="scheduleGroup">
           <div class="">
-            <!-- <usu-radio-button-group fxLayout="column" formControlName="formatSelect" (change)="changeFormat($event)" style="width: 100%"> -->
-            <!-- <mat-radio-group fxLayout="column" formControlName="formatSelect" (change)="changeFormat($event)" style="width: 100%"> -->
-            <usu-radio-button-group fxLayout="column" name="formatSelect" formControlName="formatSelect" style="width: 100%" (usuChange)="changeFormat($event)" >
-              
+            <usu-radio-button-group fxLayout="column" name="formatSelect" formControlName="formatSelect"
+              style="width: 100%" (usuChange)="changeFormat($event)">
+
               <!-- Format Minute -->
               <div fxLayout="row">
                 <div fxLayout="row">
@@ -62,103 +49,75 @@
 
                   <usu-radio-button [value]="FORMAT_MINUTE" [disabled]="disableButtons" style="margin-right: 12px;">
                     {{label_format_minute0}}
-                  </usu-radio-button> 
-                  <!-- <mat-radio-button [value]="FORMAT_MINUTE" [disabled]="disableButtons">
-                    <mat-label class="monthly-label">{{label_format_minute0}}</mat-label>
-                  </mat-radio-button> -->
+                  </usu-radio-button>
+                  <div class="main" style="width: 41px;">
+                    <div class="under">
+                      <usu-form-field fxFlex style="line-height: 15px;width: 35px;margin-bottom: 3px!important">
+                        <select slot="input" formControlName="fmi_minute" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let minute of minutesList" [value]="minute+1">{{ minute + 1 }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fmi_minute.invalid && scheduleGroup.controls.fmi_minute.touched">{{getErrorMessage()}}</span>
+                    </div>
+                  </div>
 
-
-                 <div class="main" style="width: 41px;">
-                   <div class="under">
-                    <usu-form-field fxFlex style="line-height: 15px;width: 35px;margin-bottom: 3px!important">
-                      <select slot="input" formControlName="fmi_minute"
-                        class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                        <option *ngFor="let minute of minutesList" [value]="minute+1">{{ minute + 1 }}</option>
-                      </select>
-                    </usu-form-field>
-                    <span class="error-field" *ngIf="scheduleGroup.controls.fmi_minute.invalid && scheduleGroup.controls.fmi_minute.touched">{{getErrorMessage()}}</span>
-                   </div>
-                 </div>
-                  <!-- <mat-form-field style="line-height: 15px; width: 35px;">
-                    <mat-select formControlName="fmi_minute">
-                      <mat-option *ngFor="let minute of minutesList" [value]="minute+1">
-                        {{ minute + 1 }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fmi_minute.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
 
                   <mat-label class="monthly-label" style="width: 175px;">{{label_format_minute1}}</mat-label>
 
-                    <!-- +++++ Hour +++++ -->
+
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fmi_startHour" (change)="fmiChangeMinHour($event)"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fmi_startHour.invalid && scheduleGroup.controls.fmi_startHour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fmi_startHour" (change)="fmiChangeMinHour($event)"
+                          class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fmi_startHour.invalid && scheduleGroup.controls.fmi_startHour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
 
-                  <!-- <mat-form-field style="margin-left: 10px; width: 35px">
-                    <mat-select formControlName="fmi_startHour" (selectionChange)="fmiChangeMinHour($event)">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fmi_startHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
+
 
                   <mat-label class="monthly-label">{{label_format_minute2}}</mat-label>
-                  <!-- +++++ Hour +++++ -->
+
 
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fmi_endHour" 
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fmi_endHour.invalid && scheduleGroup.controls.fmi_endHour.touched ">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fmi_endHour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fmi_endHour.invalid && scheduleGroup.controls.fmi_endHour.touched ">{{getErrorMessage()}}</span>
                     </div>
                   </div>
 
-                  <!-- <mat-form-field style="margin-left: 10px; width: 35px">
-                    <mat-select formControlName="fmi_endHour">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fmi_endHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
+
 
                   <mat-label class="monthly-label">{{label_format_minute3}}</mat-label>
                 </div>
                 <div fxLayout="row">
                   <div [hidden]="scheduleGroup.get('formatSelect').value !== FORMAT_MINUTE" *ngFor="let day of fmi_week"
-                       class="day-value">
-                  <span *ngIf="!day.isSelected" class="days-in-week" (click)="changeDaysInWeek(day.identifier, FORMAT_MINUTE)">
-                    {{ day.value }}
-                  </span>
+                    class="day-value">
+                    <span *ngIf="!day.isSelected" class="days-in-week"
+                      (click)="changeDaysInWeek(day.identifier, FORMAT_MINUTE)">
+                      {{ day.value }}
+                    </span>
                     <span *ngIf="day.isSelected" class="days-in-week-selected"
-                          (click)="changeDaysInWeek(day.identifier, FORMAT_MINUTE)">
-                    {{ day.value }}
-                  </span>
+                      (click)="changeDaysInWeek(day.identifier, FORMAT_MINUTE)">
+                      {{ day.value }}
+                    </span>
                   </div>
                   <div [hidden]="scheduleGroup.get('formatSelect').value === FORMAT_MINUTE" *ngFor="let day of fmi_week"
-                       class="day-value">
+                    class="day-value">
                     <span class="days-in-week-disabled"> {{ day.value }}</span>
                   </div>
                   <div fxFlex></div>
@@ -169,102 +128,70 @@
               <div fxLayout="row">
                 <div fxLayout="row">
 
-
-                  <!-- <mat-radio-button [value]="FORMAT_HOUR" [disabled]="disableButtons">
-                    <mat-label class="monthly-label">{{label_format_hour0}}</mat-label>
-                  </mat-radio-button> -->
                   <usu-radio-button [value]="FORMAT_HOUR" [disabled]="disableButtons" style="margin-right: 12px;">
-                    {{label_format_minute0}}
-                  </usu-radio-button> 
+                    {{label_format_hour0}}
+                  </usu-radio-button>
 
                   <div class="main" style="width: 38px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 47px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fho_hour" 
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of sixHoursList" [value]="hour+1">{{ hour + 1}}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fho_hour.invalid && scheduleGroup.controls.fho_hour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 47px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fho_hour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of sixHoursList" [value]="hour+1">{{ hour + 1}}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fho_hour.invalid && scheduleGroup.controls.fho_hour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-
-<!-- 
-                  <mat-form-field style="line-height: 15px; width: 35px;">
-                    <mat-select formControlName="fho_hour">
-                      <mat-option *ngFor="let hour of sixHoursList" [value]="hour+1">
-                        {{ hour + 1 }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fho_hour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
 
 
                   <mat-label class="monthly-label" style="width: 175px;">{{label_format_hour1}}</mat-label>
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fho_startHour" (change)="fhoChangeMinHour($event)"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fho_startHour.invalid && scheduleGroup.controls.fho_startHour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fho_startHour" (change)="fhoChangeMinHour($event)"
+                          class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fho_startHour.invalid && scheduleGroup.controls.fho_startHour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-                  <!-- <mat-form-field style="margin-left: 10px; width: 35px">
-                    <mat-select formControlName="fho_startHour" (selectionChange)="fhoChangeMinHour($event)">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fho_startHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
+
                   <mat-label class="monthly-label">{{label_format_hour2}}</mat-label>
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fho_endHour"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fho_endHour.invalid && scheduleGroup.controls.fho_endHour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fho_endHour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fho_endHour.invalid && scheduleGroup.controls.fho_endHour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-
-                  <!-- <mat-form-field style="margin-left: 10px; width: 35px">
-                    <mat-select formControlName="fho_endHour">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fho_endHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
 
                   <mat-label class="monthly-label">{{label_format_hour3}}</mat-label>
                 </div>
                 <div fxLayout="row">
                   <div [hidden]="scheduleGroup.get('formatSelect').value !== FORMAT_HOUR" *ngFor="let day of fho_week"
-                       class="day-value">
-                  <span *ngIf="!day.isSelected" class="days-in-week" (click)="changeDaysInWeek(day.identifier, FORMAT_HOUR)">
-                    {{ day.value }}
-                  </span>
+                    class="day-value">
+                    <span *ngIf="!day.isSelected" class="days-in-week"
+                      (click)="changeDaysInWeek(day.identifier, FORMAT_HOUR)">
+                      {{ day.value }}
+                    </span>
                     <span *ngIf="day.isSelected" class="days-in-week-selected"
-                          (click)="changeDaysInWeek(day.identifier, FORMAT_HOUR)">
-                    {{ day.value }}
-                  </span>
+                      (click)="changeDaysInWeek(day.identifier, FORMAT_HOUR)">
+                      {{ day.value }}
+                    </span>
                   </div>
                   <div [hidden]="scheduleGroup.get('formatSelect').value === FORMAT_HOUR" *ngFor="let day of fho_week"
-                       class="day-value">
+                    class="day-value">
                     <span class="days-in-week-disabled"> {{ day.value }}</span>
                   </div>
                   <div fxFlex></div>
@@ -275,76 +202,54 @@
               <div fxLayout="row">
                 <div fxLayout="row">
 
-                  <usu-radio-button [value]="FORMAT_DAY" [disabled]="disableButtons" style="width: 301px;margin-right: 12px;">
+                  <usu-radio-button [value]="FORMAT_DAY" [disabled]="disableButtons"
+                    style="width: 301px;margin-right: 12px;">
                     {{label_format_day0}}
-                  </usu-radio-button> 
-
-
-                  <!-- <mat-radio-button [value]="FORMAT_DAY" [disabled]="disableButtons" style="width: 341px;">
-                    <mat-label class="monthly-label" >{{label_format_day0}}</mat-label>
-                  </mat-radio-button> -->
+                  </usu-radio-button>
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fda_startHour"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fda_startHour.invalid && scheduleGroup.controls.fda_startHour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fda_startHour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fda_startHour.invalid && scheduleGroup.controls.fda_startHour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-
-                  <!-- <mat-form-field style="line-height: 15px; width: 35px;">
-                    <mat-select formControlName="fda_startHour">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fda_startHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
                   <mat-label class="monthly-label">{{label_format_day1}}</mat-label>
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fda_endHour"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fda_endHour.invalid && scheduleGroup.controls.fda_endHour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fda_endHour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fda_endHour.invalid && scheduleGroup.controls.fda_endHour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
 
-                  <!-- <mat-form-field style="margin-left: 10px; width: 35px">
-                    <mat-select formControlName="fda_endHour">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fda_endHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
                   <mat-label class="monthly-label">{{label_format_day2}}</mat-label>
                 </div>
                 <div fxLayout="row">
                   <div [hidden]="scheduleGroup.get('formatSelect').value !== FORMAT_DAY" *ngFor="let day of fda_week"
-                       class="day-value">
-                  <span *ngIf="!day.isSelected" class="days-in-week" (click)="changeDaysInWeek(day.identifier, FORMAT_DAY)">
-                    {{ day.value }}
-                  </span>
+                    class="day-value">
+                    <span *ngIf="!day.isSelected" class="days-in-week"
+                      (click)="changeDaysInWeek(day.identifier, FORMAT_DAY)">
+                      {{ day.value }}
+                    </span>
                     <span *ngIf="day.isSelected" class="days-in-week-selected"
-                          (click)="changeDaysInWeek(day.identifier, FORMAT_DAY)">
-                    {{ day.value }}
-                  </span>
+                      (click)="changeDaysInWeek(day.identifier, FORMAT_DAY)">
+                      {{ day.value }}
+                    </span>
                   </div>
                   <div [hidden]="scheduleGroup.get('formatSelect').value === FORMAT_DAY" *ngFor="let day of fda_week"
-                       class="day-value">
+                    class="day-value">
                     <span class="days-in-week-disabled"> {{ day.value }}</span>
                   </div>
                   <div fxFlex></div>
@@ -358,95 +263,68 @@
 
                   <usu-radio-button [value]="FORMAT_MONTH" [disabled]="disableButtons" style="margin-right: 12px;">
                     {{label_format_month0}}
-                  </usu-radio-button> 
-
-                  <!-- <mat-radio-button [value]="FORMAT_MONTH" [disabled]="disableButtons">
-                    <mat-label class="monthly-label">{{label_format_month0}}</mat-label>
-                  </mat-radio-button>
-                   -->
-
-                   <div class="main" style="width: 41px;">
+                  </usu-radio-button>
+                  <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fmo_dayOfMonth"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let day of daysList" [value]="day">{{ day }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid && scheduleGroup.controls.fmo_dayOfMonth.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fmo_dayOfMonth" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let day of daysList" [value]="day">{{ day }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid && scheduleGroup.controls.fmo_dayOfMonth.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-                  <!-- <mat-form-field style="line-height: 15px; width: 35px;">
-                    <mat-select formControlName="fmo_dayOfMonth">
-                      <mat-option *ngFor="let day of daysList" [value]="day">
-                        {{ day }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
+
                   <mat-label class="monthly-label" style="width: 175px;">{{label_format_month1}}</mat-label>
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fmo_startHour"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ day }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid && scheduleGroup.controls.fmo_dayOfMonth.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fmo_startHour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid && scheduleGroup.controls.fmo_dayOfMonth.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-                  <!-- <mat-form-field style="margin-left: 10px; width: 35px">
-                    <mat-select formControlName="fmo_startHour">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fmo_startHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
+
                   <mat-label class="monthly-label">{{label_format_month2}}</mat-label>
 
                   <div class="main" style="width: 41px;">
                     <div class="under">
-                     <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                       <select slot="input" formControlName="fmo_endHour"
-                         class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
-                         <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
-                       </select>
-                     </usu-form-field>
-                     <span class="error-field" *ngIf="scheduleGroup.controls.fmo_endHour.invalid && scheduleGroup.controls.fmo_endHour.touched">{{getErrorMessage()}}</span>
+                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                        <select slot="input" formControlName="fmo_endHour" class="usu-custom-form-element-active"
+                          style="width: 71px; padding: 4px;">
+                          <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
+                        </select>
+                      </usu-form-field>
+                      <span class="error-field"
+                        *ngIf="scheduleGroup.controls.fmo_endHour.invalid && scheduleGroup.controls.fmo_endHour.touched">{{getErrorMessage()}}</span>
                     </div>
                   </div>
-                  <!-- <mat-form-field style="line-height: 15px; margin-left: 10px; width: 35px;">
-                    <mat-select formControlName="fmo_endHour">
-                      <mat-option *ngFor="let hour of hoursList" [value]="hour">
-                        {{ hour }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="scheduleGroup.controls.fmo_endHour.invalid">
-                      {{getErrorMessage()}}
-                    </mat-error>
-                  </mat-form-field> -->
+
                   <mat-label class="monthly-label">{{label_format_month3}}</mat-label>
                 </div>
                 <div fxFlex></div>
               </div>
-            <!-- </mat-radio-group> -->
-          </usu-radio-button-group>
+
+            </usu-radio-button-group>
           </div>
           <div>
             <div fxFlex></div>
-            <button mat-raised-button class="smartcollect" (click)="validateSchedule()" [disabled]="!scheduleGroup.valid || noDaySelect">
-              {{"LABEL_SAVE" | translate}}
-            </button>
-            <button mat-raised-button class="smartcollect" (click)="applySchedule()">
-              {{"LABEL_APPLY" | translate}}
-            </button>
+            <usu-button [disabled]="!scheduleGroup.valid || noDaySelect" class="hydrated smartcollect"
+              (click)="validateSchedule()" fxFlexAlign="right" aria-label="Cancel button"> {{"LABEL_SAVE" | translate}}
+            </usu-button>
+
+
+            <usu-button class="hydrated smartcollect" (click)="applySchedule()" style="margin-left: 11px;"
+              fxFlexAlign="right" aria-label="Cancel button"> {{"LABEL_APPLY" | translate}}
+            </usu-button>
+
           </div>
         </form>
       </mat-accordion>

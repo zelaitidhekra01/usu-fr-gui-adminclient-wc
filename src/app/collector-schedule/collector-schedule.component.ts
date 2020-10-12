@@ -103,7 +103,6 @@ export class CollectorScheduleComponent implements OnInit {
     this._tradDynamicLabel(this.label_format_month, 'label_format_month');
 
     this.minutesList = this.collectorScheduleService.getAllMinutes();
-    console.log("==> * this.minutesList:", this.minutesList);
     
     this.sixHoursList = this.collectorScheduleService.getSixHours();
     this.hoursList = this.collectorScheduleService.getAllHours();
@@ -296,7 +295,7 @@ export class CollectorScheduleComponent implements OnInit {
 
   fhoChangeMinHour = (data) => {
     const frequency = this.scheduleGroup.get('fho_hour').value ? this.scheduleGroup.get('fho_hour').value : 1;
-    const minHourValid = data.value + (2 * frequency) + 1;
+    const minHourValid = parseInt(data.target.value) + ((2 * frequency) + 1);
 
     this.scheduleGroup.get('fho_endHour').setValidators(Validators.min(minHourValid));
   };

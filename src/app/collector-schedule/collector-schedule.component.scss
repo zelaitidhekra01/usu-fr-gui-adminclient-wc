@@ -28,7 +28,7 @@
     text-align: center;
     font-size: 24px;
     line-height: 60px;
-    color: $main-color;
+    color: var(--usu-button-primary-background, #004f9f);
     cursor: pointer;
     outline: none;
   }
