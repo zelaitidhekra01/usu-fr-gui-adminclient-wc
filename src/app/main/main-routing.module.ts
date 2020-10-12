@@ -7,6 +7,7 @@ import { DefaultConnectionComponent } from '../default-connection/default-connec
 import { OrganizationsComponent } from '../organizations/organizations.component';
 import { ScenarioComponent } from '../scenario/scenario.component';
 import { UsersComponent } from '../users/users.component';
+import {SmartcollectorFrequencyComponent} from '../smartcollector-frequency/smartcollector-frequency.component';
 
 import {MainComponent} from './main.component';
 
@@ -44,6 +45,10 @@ export const routes: Routes = [
         {
           path: 'collector-schedule',
           component: CollectorScheduleComponent
+        },
+        {
+          path: 'smartcollector-frequency',
+          component: SmartcollectorFrequencyComponent
         }
        
       ]
