@@ -11,7 +11,7 @@
     h1, h2, h3, h4 {
       color: white;
     }
-
+    
 close-icon{
   color: white!important;
  }
@@ -34,6 +34,14 @@ close-icon{
     color: $font-color;
     margin-bottom: 10px;
   }
-
+  main{
+    position:relative; /* ADD THIS! */
+    height: 200px;
+    width: 50%
+  }
+  .under{
+    display: flex;
+    flex-direction: column;
+  }
 
 }

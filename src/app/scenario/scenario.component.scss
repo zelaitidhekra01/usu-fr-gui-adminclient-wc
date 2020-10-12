@@ -19,7 +19,15 @@
     width: 100%;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
-
+.main{
+  position:relative; /* ADD THIS! */
+  height: 200px;
+  width: 50%
+}
+.under{
+  display: flex;
+  flex-direction: column;
+}
   .font-color-dark-boolean {
     font-family: open-sans-semibold, sans-serif !important;
     color: $font-color-dark !important;

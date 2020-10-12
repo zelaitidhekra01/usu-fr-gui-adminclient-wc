@@ -16,7 +16,15 @@
       }
     }
   }
-
+  main{
+    position:relative; /* ADD THIS! */
+    height: 200px;
+    width: 50%
+  }
+  .under{
+    display: flex;
+    flex-direction: column;
+  }
   .bottom-grid-buttons {
     margin-top: 10px;
   }

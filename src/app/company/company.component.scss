@@ -1,6 +1,14 @@
 
 
-
+.main{
+    position:relative; /* ADD THIS! */
+    height: 200px;
+    width: 50%
+  }
+  .under{
+    display: flex;
+    flex-direction: column;
+  }
 .card {
     background: #fff;
     border-radius: 2px;

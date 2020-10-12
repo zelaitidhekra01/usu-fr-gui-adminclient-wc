@@ -16,10 +16,20 @@ mat-toolbar {
       padding: 8px;
     }
   }
+  
 }
+
 mat-form-field{
   margin: 18px 0 0;
 }
 
-
+.main{
+  position:relative; /* ADD THIS! */
+  height: 200px;
+  width: 50%
+}
+.under{
+  display: flex;
+  flex-direction: column;
+}
 

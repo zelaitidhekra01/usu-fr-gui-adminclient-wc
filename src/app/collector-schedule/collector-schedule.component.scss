@@ -1,0 +1,64 @@
+@import "../../../node_modules/usu-fr-gui-commons/style/theme-variables";
+
+:host {
+  overflow-y: auto;
+  font-family: open-sans, sans-serif;
+  font-size: 13px;
+
+  .mat-radio-button {
+    font-family: open-sans, sans-serif;
+  }
+
+  .days-in-week {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 60px;
+    color: $font-color;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .days-in-week-selected {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 60px;
+    color: $main-color;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .days-in-week-disabled {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 60px;
+    color: $font-color;
+    cursor: default;
+    outline: none;
+  }
+
+  .day-value {
+    margin-top: -10px;
+  }
+
+  .monthly-label {
+    color: $font-color-dark !important;
+    line-height: 45px;
+    margin: 0 15px;
+  }
+  .main{
+    position:relative; /* ADD THIS! */
+  }
+  .under{
+    display: flex;
+    flex-direction: column;
+  }
+}

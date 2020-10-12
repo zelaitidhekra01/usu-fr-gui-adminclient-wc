@@ -50,15 +50,7 @@ mat-dialog-container.mat-dialog-container {
 pre {
   white-space: pre-wrap;
 }
-.main{
-  position:relative; /* ADD THIS! */
-  height: 200px;
-  width: 50%
-}
-.under{
-  display: flex;
-  flex-direction: column;
-}
+
 .error-field{
   color: red; 
   font-size: 11px; 
