@@ -15,7 +15,8 @@
                         <div fxFlex="50" >
                           <usu-form-field class="section-field-scenario">
                             <label slot="label" class="section-label">{{ 'LABEL_SCENARIO' | translate }}:</label>
-                            <select slot="input"  style="border-bottom: 2px solid var(--usu-button-primary-background, #004f9f);" (change)="getScenarioById($event)" [(value)]="currentScenarioId">
+                            <select slot="input"  
+                            style="background-color: rgba(0,0,0,.04);border: rgba(0,0,0,.04) " (change)="getScenarioById($event)" [(value)]="currentScenarioId">
                             <option *ngFor="let currentValue of scenarioList" [value]="currentValue.identifier" >{{ currentValue.name }}</option>
                             </select>
                           </usu-form-field> 

@@ -50,7 +50,7 @@
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.3",
     "tslib": "^2.0.0",
-    "usu-fr-gui-commons": "git+https://5dc13b2e43e68b7856bd18bebefa0d54708fd369:x-oauth-basic@github.com/usu-fr/usu-fr-gui-commons.git#migration-wc",
+    "usu-fr-gui-commons": "git+https://39763141c680e83dd279bede63790690940d4a43:x-oauth-basic@github.com/usu-fr/usu-fr-gui-commons.git#migration-wc",
     "webpack": "^4.44.2",
     "zone.js": "~0.10.2"
   },

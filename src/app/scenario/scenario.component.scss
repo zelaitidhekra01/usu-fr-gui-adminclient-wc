@@ -175,7 +175,8 @@
     margin-bottom: 20px;
   }
   .expansion-panel-select{
-    border-bottom: 2px solid var(--usu-button-primary-background, #004f9f); 
+    background-color: rgba(0,0,0,.04);
+    border: rgba(0,0,0,.04);
     padding-bottom: 5px;
     height: 46px;
     width: 295px;

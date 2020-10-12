@@ -21,7 +21,7 @@
                   <label slot="label">{{'LABEL_FIRSTNAME' | translate}}</label>
 
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #firstName="ngModel" [(ngModel)]="user.preferences.firstName" name="firstName"
                     [disabled]="isCreate && creationSuccess" required></usu-input>
                 </usu-form-field>
@@ -38,7 +38,7 @@
                   <label slot="label">{{'LABEL_LASTNAME' | translate}}</label>
 
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #lastName="ngModel" [(ngModel)]="user.preferences.lastName" name="lastName"
                     [disabled]="isCreate && creationSuccess" required></usu-input>
 
@@ -56,7 +56,7 @@
                 <usu-form-field fxFlex="50" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_LOGIN' | translate}}</label>
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #login="ngModel" [(ngModel)]="user.username" name="login"
                     [disabled]="!isCreate || (isCreate && creationSuccess)" pattern="^[a-z0-9._%-]+$" required>
                   </usu-input>
@@ -75,7 +75,7 @@
                 <usu-form-field fxFlex="50" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_EMAIL' | translate}}</label>
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #email="ngModel" [(ngModel)]="user.preferences.email" name="email"
                     [disabled]="isCreate && creationSuccess" [pattern]="regexEmail" required></usu-input>
 
@@ -95,7 +95,7 @@
                 <usu-form-field fxFlex="50" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_PASSWORD' | translate}}</label>
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="password" #new_password="ngModel" [(ngModel)]="user.preferences.password"
                     [pattern]="regexPassword" name="new_password" [disabled]="isCreate && creationSuccess" required>
                   </usu-input>
@@ -116,7 +116,7 @@
                 <usu-form-field fxFlex="50" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_PASSWORD_CONFIRM' | translate}}</label>
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="password" #passwordConfirm="ngModel" [(ngModel)]="user.preferences.passwordConfirm"
                     [pattern]="user.preferences.password" name="passwordConfirm"
                     [disabled]="isCreate && creationSuccess" required></usu-input>
@@ -137,7 +137,7 @@
                 <usu-form-field fxFlex="49" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_PHONE' | translate}}</label>
                   <usu-input slot="input"
-                    class="usu-custom-form-element-active sc-usu-input-h sc-usu-input-s usu-custom-form-element-filled hydrated usu-custom-form-element-default remove-border"
+                    class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #phone="ngModel" [(ngModel)]="user.preferences.phone" [pattern]="regexPhoneNumber"
                     name="phone" [disabled]="isCreate && creationSuccess" required></usu-input>
                 </usu-form-field>

@@ -53,7 +53,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field fxFlex style="line-height: 15px;width: 35px;margin-bottom: 3px!important">
-                        <select slot="input" formControlName="fmi_minute" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fmi_minute" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let minute of minutesList" [value]="minute+1">{{ minute + 1 }}</option>
                         </select>
@@ -72,7 +72,7 @@
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
                         <select slot="input" formControlName="fmi_startHour" (change)="fmiChangeMinHour($event)"
-                          class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
+                          class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default" style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
                       </usu-form-field>
@@ -90,7 +90,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fmi_endHour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fmi_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
@@ -135,7 +135,7 @@
                   <div class="main" style="width: 38px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 47px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fho_hour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fho_hour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of sixHoursList" [value]="hour+1">{{ hour + 1}}</option>
                         </select>
@@ -152,7 +152,7 @@
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
                         <select slot="input" formControlName="fho_startHour" (change)="fhoChangeMinHour($event)"
-                          class="usu-custom-form-element-active" style="width: 71px; padding: 4px;">
+                          class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default" style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
                       </usu-form-field>
@@ -166,7 +166,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fho_endHour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fho_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
@@ -210,7 +210,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fda_startHour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fda_startHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
@@ -224,7 +224,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fda_endHour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fda_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
@@ -267,7 +267,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fmo_dayOfMonth" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fmo_dayOfMonth" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let day of daysList" [value]="day">{{ day }}</option>
                         </select>
@@ -282,7 +282,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fmo_startHour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fmo_startHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
@@ -297,7 +297,7 @@
                   <div class="main" style="width: 41px;">
                     <div class="under">
                       <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
-                        <select slot="input" formControlName="fmo_endHour" class="usu-custom-form-element-active"
+                        <select slot="input" formControlName="fmo_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
