@@ -1,0 +1,67 @@
+@import "../../../../node_modules/usu-fr-gui-commons/style/theme-variables";
+
+::ng-deep .mat-dialog-container {
+  padding: unset;
+}
+
+:host {
+
+  .mat-dialog-container,
+  .dialog-container {
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .dialog-container {
+    width: 1024px;
+
+    .title {
+
+      background-color: $main-color;
+
+      h2 {
+        color: $black-color-light;
+        font-size: inherit;
+        font-weight: inherit;
+        margin: inherit;
+      }
+      h1, h2, h3, h4 {
+        color: $black-color-light;
+        margin-bottom: .5em;
+      }
+
+      div.mat-icon-button {
+        mat-icon {
+          color: white;
+          padding: 8px;
+        }
+      }
+    }
+
+    .stackTrace {
+      background-color: $background-color;
+      padding: 0 40px;
+    }
+
+    .content {
+      padding: 20px 30px;
+      max-height: 500px;
+      overflow-y: auto;
+      > div {
+        padding-top: 15px;
+      }
+    }
+
+    .footer {
+      padding: 20px 30px;
+    }
+
+    mat-form-field label {
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+  }
+}
+

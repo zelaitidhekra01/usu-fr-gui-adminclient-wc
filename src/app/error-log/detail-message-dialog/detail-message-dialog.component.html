@@ -1,0 +1,35 @@
+<div class="dialog-container">
+
+    <mat-toolbar class="title">
+      <mat-toolbar-row>
+        <h2>{{"LABEL_ERROR_MESSAGE" | translate}}</h2>
+        <div fxFlex="1 1 auto"></div>
+        <div class="mat-icon-button" id="close-user-dialog" (click)="closeDialog()"
+             aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <div class="content">
+      <h3>{{"LABEL_ERROR_MESSAGE" | translate}} {{entity.type}}</h3>
+    </div>
+  
+    <div style="margin: 0 25px;">
+      <mat-dialog-content fxLayout="row" class="stackTrace">
+        <pre>{{entity.message}}</pre>
+      </mat-dialog-content>
+    </div>
+  
+  
+    <div fxLayout="row" class="footer">
+      <div fxFlex></div>
+      <button mat-raised-button class="smartcollect not-disabled-look" (click)="copyInputMessage()">
+        {{"LABEL_COPY_ERROR_MESSAGE" | translate }}
+      </button>
+      <button mat-raised-button (click)="closeDialog()" class="smartcollect" aria-label="Close">
+        {{"LABEL_CLOSE" | translate}}
+      </button>
+    </div>
+  </div>
+  

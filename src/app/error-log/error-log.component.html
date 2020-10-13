@@ -1,3 +1,89 @@
+<!--<div class="breadcrumb-container">{{ 'SIDEBAR.MAINTENANCE.LOGGING.LABEL' | translate }}</div>-->
+<app-breadcrumb></app-breadcrumb>
+<div class="page-container">
+  <div class="easy-page action-list" [class]="{displayed : displayed}" fxLayout="column">
+    <div style="margin-bottom: 15px;">
+      <div fxFlex></div>
+      <div class="text-center-sc">
+        <span>{{'LABEL_LAST_DATE_REQUEST' | translate}}: </span>
+        <span class="bold-date">{{lastRefreshDate | date:refreshDateFormat}}</span>
+      </div>
+      <button mat-raised-button class="smartcollect refresh text-center-sc" (click)="refresh()"
+              aria-label="Refresh">
+        <span *ngIf="!isRefreshing"><i class="fa fa-sync-alt" aria-hidden="true"></i></span>
+        <span *ngIf="isRefreshing"><i class="fa fa-sync-alt fa-spin" aria-hidden="true"></i></span>
+      </button>
+    </div>
+    <div class="grid-container action-grid">
+      <app-grid-settings [component]="this" [columns]="'columns'" [rowsLength]="logsData.length"
+                         [gridIdx]="grid.apiIdx" [fileName]="'error-logs'">
+      </app-grid-settings>
+      <ngx-datatable
+        #grid
+        class='material striped table-height-sc-xl'
+        [rows]="logsData"
+        [columnMode]="'force'"
+        [columns]="columns"
+        [headerHeight]="getHeaderHeight"
+        [footerHeight]="0"
+        [rowHeight]="easyGrid.getLineHeight()"
+        [scrollbarV]="true"
+        [scrollbarH]="false"
+        (scroll)="easyGrid.onScroll($event.offsetY, grid.apiIdx)"
+        [loadingIndicator]="isLoading"
+        [externalSorting]="true"
+        [sorts]="[{prop: 'modificationDate', dir: 'desc'}]"
+        (sort)="easyGrid.sortChanged($event, grid.apiIdx)"
+        [messages]="easyGrid.getTableMessages()"
+        [reorderable]="true"
+        [swapColumns]="false">
+        <ng-template #hdrTpl let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+          <app-column-filter #parent [column]=column [sort]=sort [grid]=grid [sortDir]=sortDir></app-column-filter>
+        </ng-template>
 
+        <ng-template #hdrDateTpl let-column="column" let-sort="sortFn" let-sortDir="sortDir"
+                     ngx-datatable-header-template>
+          <app-date-filter [column]=column [sort]=sort [grid]=grid [sortDir]=sortDir></app-date-filter>
+        </ng-template>
 
-<h1>ErrorLogComponent</h1>
+        <ng-template #hdrDetailTpl let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+          <span>{{column.name}}</span>
+        </ng-template>
+
+        <ng-template #serverTpl let-row="row" let-value="value" ngx-datatable-cell-template>
+          <a target="_blank" [href]="routerLinkDevice" (contextmenu)="openServerDetail(row.serverId)"
+             (click)="openServerDetail(row.serverId)" class="click-cell">
+            {{value}}
+          </a>
+        </ng-template>
+
+        <ng-template #quantumTpl let-row="row" let-value="value" ngx-datatable-cell-template>
+          <a target="_blank" [href]="routerLinkSmartcollector" (contextmenu)="openQuantumDetail(row)"
+             (click)="openQuantumDetail(row)" class="click-cell" >
+            {{value}}
+          </a>
+        </ng-template>
+
+        <ng-template #detailMessageTpl let-row="row" let-value="value" ngx-datatable-cell-template>
+          <div class="center grid-buttons">
+                <span (click)="openPopupDetailDialog(row, 'data')" class="flexChildren"
+                      matTooltip="{{'LABEL_PENCIL_DETAIL' | translate}}">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+          </div>
+        </ng-template>
+
+        <ng-template #errorMessageTpl let-row="row" let-value="value" ngx-datatable-cell-template>
+          <div class="center grid-buttons">
+                <span (click)="openPopupDetailDialog(row, 'error')" class="flexChildren"
+                      matTooltip="{{'LABEL_PENCIL_DETAIL' | translate}}">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+          </div>
+        </ng-template>
+      </ngx-datatable>
+    </div>
+  </div>
+</div>
+
+<app-wait [selectable]="label" class="flexParent" *ngIf="!displayed"></app-wait>
