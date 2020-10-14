@@ -15,17 +15,19 @@
       box-shadow: none;
     }
   }
-
-  .bottom-grid-buttons {
-    margin-top: 10px;
+  usu-icon.hydrated.ng-star-inserted {
+    padding: 3px !important;
   }
-}
-.main{
-  position:relative; /* ADD THIS! */
-  height: 200px;
-  width: 50%
-}
-.under{
-  display: flex;
-  flex-direction: column;
+  .grid-buttons {
+    span {
+      margin-right: 10px;
+      cursor: pointer;
+
+      .svg-inline--fa {
+        color:  var(--usu-button-primary-background, #004f9f);
+        margin-bottom: 3px;
+        font-size: 12px;
+      }
+    }
+  }
 }
