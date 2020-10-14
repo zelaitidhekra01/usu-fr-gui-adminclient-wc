@@ -3,31 +3,34 @@
   <div class="tabs-container" style="width: 97%!important">
     <section class="tab-admin-company" fxLayout="column" style="padding: 2em!important;">
       <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
-            <usu-form-field fxFlex="50" [attr.status]="((name.errors?.required) && (name.touched)) ? 'error' : '' " style="margin-bottom: 0;"> 
-              <label slot="label">{{"LABEL_NAME" | translate}}</label>
-              <usu-input slot="input"
-              class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
-              type="text" name="name" [(ngModel)]="companyInfo.name" #name="ngModel" required></usu-input>  
-            <span slot="message" [style.visibility]="((name.errors?.required) && (name.touched)) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
-          </usu-form-field>
+        <usu-form-field fxFlex="50" [attr.status]="((name.errors?.required) && (name.touched)) ? 'error' : '' "
+          style="margin-bottom: 0;">
+          <label slot="label">{{"LABEL_NAME" | translate}}</label>
+          <usu-input slot="input"
+            class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+            type="text" name="name" [(ngModel)]="companyInfo.name" #name="ngModel" required></usu-input>
+          <span slot="message"
+            [style.visibility]="((name.errors?.required) && (name.touched)) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
+        </usu-form-field>
         <div fxFlex="2"></div>
-            <usu-form-field fxFlex="50" [attr.status]="((websiteUrl.errors?.pattern) && (websiteUrl.touched)) ? 'error' : '' " style="margin-bottom: 0;">
-              <label slot="label">{{"LABEL_WEBSITE" | translate}}</label>
-              <usu-input slot="input"
-                class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
-                type="text" #websiteUrl="ngModel" [(ngModel)]="companyInfo.websiteUrl" name="websiteUrl"
-                [pattern]="regexUrl"></usu-input>
-                <span slot="message" 
-                [style.visibility]="((websiteUrl.errors?.pattern) && (websiteUrl.touched))  ? 'visible' : 'hidden'">{{"ERROR_URL" | translate}}</span>
-            </usu-form-field> 
-          </div>
-       
+        <usu-form-field fxFlex="50"
+          [attr.status]="((websiteUrl.errors?.pattern) && (websiteUrl.touched)) ? 'error' : '' "
+          style="margin-bottom: 0;">
+          <label slot="label">{{"LABEL_WEBSITE" | translate}}</label>
+          <usu-input slot="input"
+            class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+            type="text" #websiteUrl="ngModel" [(ngModel)]="companyInfo.websiteUrl" name="websiteUrl"
+            [pattern]="regexUrl"></usu-input>
+          <span slot="message"
+            [style.visibility]="((websiteUrl.errors?.pattern) && (websiteUrl.touched))  ? 'visible' : 'hidden'">{{"ERROR_URL" | translate}}</span>
+        </usu-form-field>
+      </div>
       <div fxFlex="2"></div>
-    
-      <div fxLayout="row" class="table-row mat-field-spacing-sc" >
+      <div fxLayout="row" class="table-row mat-field-spacing-sc">
         <usu-form-field fxFlex="50">
           <label slot="label">{{"LABEL_LANGUAGE" | translate}}</label>
-          <select [(ngModel)]="companyInfo.languageId" slot="input" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+          <select [(ngModel)]="companyInfo.languageId" slot="input"
+            class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
             name="selectlangue">
             <option *ngFor="let language of languages" [value]="language.identifier">
               {{language.value}}
@@ -37,8 +40,7 @@
         <div fxFlex="2"></div>
         <usu-form-field fxFlex="50">
           <label slot="label">{{"PLAT.COMPANY.WELCOME.LABEL" | translate}}</label>
-          <usu-input
-            class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+          <usu-input class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
             slot="input" type="text" [(ngModel)]="companyInfo.welcomeMessage" name="welcomeMessage">
           </usu-input>
         </usu-form-field>
@@ -53,7 +55,6 @@
         </usu-form-field>
       </div>
     </section>
-
     <section class="tab-admin-company" fxLayout="column">
       <div fxLayout="row">
         <h2 style="border-bottom: 2px solid var(--usu-text-h2-color);">
@@ -78,51 +79,40 @@
         <h2 style="border-bottom: 2px solid var(--usu-text-h2-color);">
           {{"LABEL_LICENSE_FOR_ORACLE_PARAMETERS" | translate}}</h2>
       </div>
-
       <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
-       
-            <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="((contract.errors?.required )&& (contract.touched)) ? 'error' : '' ">
-              <label slot="label">{{"CONTRACT_TARGET" | translate}}</label>
-              <usu-input
-                class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
-                slot="input" type="number" [(ngModel)]="contracts" name="contracts" #contract="ngModel" min="0"
-                required>
-              </usu-input>
-              <span slot="message"[style.visibility]="((contract.errors?.required )&& (contract.touched))  ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}} </span>
-            </usu-form-field>
-            
-         
+        <usu-form-field fxFlex="50" style="margin-bottom: 0;"
+          [attr.status]="((contract.errors?.required )&& (contract.touched)) ? 'error' : '' ">
+          <label slot="label">{{"CONTRACT_TARGET" | translate}}</label>
+          <usu-input class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+            slot="input" type="number" [(ngModel)]="contracts" name="contracts" #contract="ngModel" min="0" required>
+          </usu-input>
+          <span slot="message"
+            [style.visibility]="((contract.errors?.required )&& (contract.touched))  ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}
+          </span>
+        </usu-form-field>
         <div fxFlex="2"></div>
-     
-      
-            <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="((server.errors?.required) && (server.touched))? 'error' : '' ">
-              <label slot="label">{{"SERVER_TARGET" | translate}}</label>
-              <usu-input
-                class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
-                slot="input" type="number" [(ngModel)]="completnessServer" name="completnessServer" #server="ngModel"
-                min="0" required></usu-input>
-                <span slot="message"
-                [style.visibility]="((server.errors?.required) && (server.touched)) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}} </span>
-            
-            </usu-form-field>
-           
+        <usu-form-field fxFlex="50" style="margin-bottom: 0;"
+          [attr.status]="((server.errors?.required) && (server.touched))? 'error' : '' ">
+          <label slot="label">{{"SERVER_TARGET" | translate}}</label>
+          <usu-input class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+            slot="input" type="number" [(ngModel)]="completnessServer" name="completnessServer" #server="ngModel"
+            min="0" required></usu-input>
+          <span slot="message"
+            [style.visibility]="((server.errors?.required) && (server.touched)) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}
+          </span>
+        </usu-form-field>
       </div>
       <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
-      
-            <usu-form-field fxFlex="50" [attr.status]="((instance.errors?.required) && (instance.touched)) ? 'error' : '' ">
-              <label slot="label">{{"DATABSE_INSTANCE_TARGET" | translate}}</label>
-              <usu-input
-                class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
-                slot="input" type="number" [(ngModel)]="completnessInstance" name="completnessInstance"
-                #instance="ngModel" min="0" required></usu-input>
-                <span slot="message"
-                [style.visibility]="((instance.errors?.required) && (instance.touched))  ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}} </span>
-            </usu-form-field>
-           
-         
- 
+        <usu-form-field fxFlex="50" [attr.status]="((instance.errors?.required) && (instance.touched)) ? 'error' : '' ">
+          <label slot="label">{{"DATABSE_INSTANCE_TARGET" | translate}}</label>
+          <usu-input class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
+            slot="input" type="number" [(ngModel)]="completnessInstance" name="completnessInstance" #instance="ngModel"
+            min="0" required></usu-input>
+          <span slot="message"
+            [style.visibility]="((instance.errors?.required) && (instance.touched))  ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}
+          </span>
+        </usu-form-field>
       </div>
-     
       <div fxLayout="row">
         <div fxFlex></div>
         <mat-dialog-actions fxLayout="row">
