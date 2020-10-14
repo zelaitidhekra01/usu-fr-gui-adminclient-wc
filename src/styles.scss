@@ -28,16 +28,6 @@ $usu-input-enabled-themes: (more-u-theme, more-u-orange-theme);
   @include usu-global-styling();
 }
 
-// @font-face {
-//   font-family: open-sans;
-//   src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Regular.ttf");
-// }
-
-// @font-face {
-//   font-family: open-sans-semibold;
-//   src: url("../node_modules/usu-fr-gui-commons/assets/fonts/open-sans/OpenSans-Semibold.ttf");
-// }
-
 // css for mat dialog
 mat-dialog-container.mat-dialog-container {
   padding: 0;
@@ -50,12 +40,3 @@ mat-dialog-container.mat-dialog-container {
 pre {
   white-space: pre-wrap;
 }
-
-.error-field{
-  color: red; 
-  font-size: 11px; 
-  margin-top: -6px;
-}
-// .remove-border{
-//   border: solid 2px rgba(0,0,0,.12) !important;
-// }
