@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {CollectorScheduleService} from './collector-schedule.service';
+import {CollectorScheduleService} from '../services/collector-schedule.service';
 import * as lodash from 'lodash';
 import {gridColumns} from './grid/grid-columns';
 import {EasyCompanyApp} from 'usu-fr-gui-commons/tools/companyApp.service';
