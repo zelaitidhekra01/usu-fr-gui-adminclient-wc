@@ -1,59 +1,47 @@
 <app-breadcrumb></app-breadcrumb>
-<div class= "container">
+<div class="container">
   <div class="easy-page displayed">
     <div class="grid-container">
-      <ngx-datatable
-        #grid
-        class='material striped table-height-sc'
-        [rows]="rows"
-        [columnMode]="'force'"
-        [columns]="gridColumns"
-        [headerHeight]="easyGrid.getHeaderHeight()"
-        [footerHeight]="0"
-        [rowHeight]="easyGrid.getLineHeight()"
-        [scrollbarV]="true"
-        [scrollbarH]="false"
-        [loadingIndicator]="loadingIndicator"
-        [reorderable]="reorderable"
-        [swapColumns]="swapColumns"
-        [messages]="easyGrid.getTableMessages()"
-        (page)="onPage($event)">
-  
+      <ngx-datatable #grid class='material striped table-height-sc' [rows]="rows" [columnMode]="'force'"
+        [columns]="gridColumns" [headerHeight]="easyGrid.getHeaderHeight()" [footerHeight]="0"
+        [rowHeight]="easyGrid.getLineHeight()" [scrollbarV]="true" [scrollbarH]="false"
+        [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [swapColumns]="swapColumns"
+        [messages]="easyGrid.getTableMessages()" (page)="onPage($event)">
+
         <ng-template #hdrTpl let-column="column" let-sort="sortFn" ngx-datatable-header-template>
           <div class="datatable-header-cell-wrapper">
-              <span class="datatable-header-cell-label draggable" (click)="sort()">
-                {{column.name}}
-              </span>
+            <span class="datatable-header-cell-label draggable" (click)="sort()">
+              {{column.name}}
+            </span>
           </div>
-          <input type='text' (keyup)='updateFilter($event, column)'/>
+          <input type='text' (keyup)='updateFilter($event, column)' />
         </ng-template>
-  
-          <ng-template #actionTpl let-row="row" ngx-datatable-cell-template>
-            <div class="center grid-buttons">
-              <span title="{{'PLAT.USERS.EDIT.INFO' | translate}}" (click)="editUser(row)"
-                    matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}">
-                <i class="fa fa-pencil-alt"></i>
-              </span>
-              <span title="{{'PLAT.USERS.DELETE.INFO' | translate}}" (click)="deleteUser(row)"
-                    matTooltip="{{'LABEL_PENCIL_DELETE' | translate}}">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              </span>
-            </div>
-          </ng-template>
+
+        <ng-template #actionTpl let-row="row" ngx-datatable-cell-template>
+          <div class="center grid-buttons" style="padding-top: 4px !important;">
+            <span title="{{'PLAT.USERS.EDIT.INFO' | translate}}" (click)="editUser(row)"
+              matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}" stype="border: 1px solid red;">
+              <usu-icon type="edit" size="small" class="hydrated"></usu-icon>
+            </span>
+            <span title="{{'PLAT.USERS.DELETE.INFO' | translate}}" (click)="deleteUser(row)"
+              matTooltip="{{'LABEL_PENCIL_DELETE' | translate}}">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+          </div>
+        </ng-template>
       </ngx-datatable>
-  
+
       <div fxLayout="row" class="bottom-grid-buttons">
         <div fxFlex></div>
-  
+
         <usu-button color="primary" class="hydrated" (click)="addUser()">
-           <usu-icon  type="add" slot="icon-before" size="regular"  class="hydrated"></usu-icon>
-            {{"LABEL_ADD" | translate}}
+          <usu-icon type="add" slot="icon-before" size="regular" class="hydrated"></usu-icon>
+          {{"LABEL_ADD" | translate}}
         </usu-button>
-      
-      </div> 
+
+      </div>
     </div>
   </div>
 
 </div>
- <app-wait class="flexParent" *ngIf="!displayed"></app-wait>
-
+<app-wait class="flexParent" *ngIf="!displayed"></app-wait>

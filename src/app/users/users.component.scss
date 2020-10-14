@@ -6,14 +6,15 @@
   ::ng-deep .datatable-header-cell-template-wrap input[type=text] {
     width: 100%;
   }
-
   .grid-buttons {
     span {
       margin-right: 10px;
       cursor: pointer;
 
       .svg-inline--fa {
-        color:  var(--usu-button-primary-background, #004f9f),;
+        color:  var(--usu-button-primary-background, #004f9f);
+        margin-bottom: 3px;
+        font-size: 12px;
       }
     }
   }
@@ -29,15 +30,6 @@
   .grids-button {
     text-align: center;
     width: 250px;
-  }
-  .main{
-    position:relative; /* ADD THIS! */
-    height: 200px;
-    width: 50%
-  }
-  .under{
-    display: flex;
-    flex-direction: column;
   }
 }
 

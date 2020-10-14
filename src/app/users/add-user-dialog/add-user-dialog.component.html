@@ -13,139 +13,118 @@
     <form #userForm="ngForm">
       <div class="tabs-container" style="width: 96% !important;">
         <section class="tab-admin-company" fxLayout="column">
-          <div fxLayout="row" class="table-row mat-field-spacing-sc">
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
 
-            <div class="main">
-              <div class="under" >
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+            
+                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="(firstName.errors?.required && firstName.touched) ? 'error' : ''">
                   <label slot="label">{{'LABEL_FIRSTNAME' | translate}}</label>
 
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #firstName="ngModel" [(ngModel)]="user.preferences.firstName" name="firstName"
                     [disabled]="isCreate && creationSuccess" required></usu-input>
+                    <span slot="message" [style.visibility]="(firstName.errors?.required && firstName.touched) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
                 </usu-form-field>
-                <span class="error-field"
-                  *ngIf="(firstName.errors?.required && firstName.touched)">{{"LABEL_REQUIRED" | translate}}</span>
-              </div>
-            </div>
+               
+             
 
             <div fxFlex="2%"></div>
 
-            <div class="main">
-              <div class="under">
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+           
+                <usu-form-field fxFlex="50"  [attr.status]="(lastName.errors?.required && lastName.touched) ? 'error' : ''" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_LASTNAME' | translate}}</label>
 
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #lastName="ngModel" [(ngModel)]="user.preferences.lastName" name="lastName"
                     [disabled]="isCreate && creationSuccess" required></usu-input>
-
+                    <span slot="message" [style.visibility]="(lastName.errors?.required && lastName.touched) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
                 </usu-form-field>
-                <span class="error-field"
-                  *ngIf="(lastName.errors?.required && lastName.touched)">{{"LABEL_REQUIRED" | translate}}</span>
-              </div>
-            </div>
+               
+            
           </div>
-          <br>
-          <div fxLayout="row" class="table-row mat-field-spacing-sc">
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
 
-            <div class="main">
-              <div  class="under">
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+        
+                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="(login.errors?.required && login.touched) ? 'error' : ''" [attr.status]="(login.errors?.pattern && login.touched) ? 'error' : ''">
                   <label slot="label">{{'LABEL_LOGIN' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #login="ngModel" [(ngModel)]="user.username" name="login"
                     [disabled]="!isCreate || (isCreate && creationSuccess)" pattern="^[a-z0-9._%-]+$" required>
                   </usu-input>
+                  <span slot="message" [style.visibility]="(login.errors?.required && login.touched) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
+                  <span slot="message"[style.visibility]="(login.errors?.pattern && login.touched) ? 'visible' : 'hidden'">{{"LABEL_LOWER_CASE_ERROR" | translate}}</span> 
                 </usu-form-field>
-                <span class="error-field"
+                <!-- <span class="error-field"
                   *ngIf="(login.errors?.required && login.touched)">{{"LABEL_REQUIRED" | translate}}</span>
                 <span class="error-field"
-                  *ngIf="(login.errors?.pattern && login.touched)">{{"LABEL_LOWER_CASE_ERROR" | translate}}</span>
+                  *ngIf="(login.errors?.pattern && login.touched)">{{"LABEL_LOWER_CASE_ERROR" | translate}}</span> -->
 
-              </div>
-            </div>
+    
             <div fxFlex="2%"></div>
 
-            <div class="main">
-              <div  class="under">
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+                <usu-form-field fxFlex="50" [attr.status]="(email.errors?.required && email.touched ) ? 'error' : ''" [attr.status]="(email.errors?.pattern && email.touched ) ? 'error' : ''"   style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_EMAIL' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #email="ngModel" [(ngModel)]="user.preferences.email" name="email"
                     [disabled]="isCreate && creationSuccess" [pattern]="regexEmail" required></usu-input>
-
-                </usu-form-field>
-                <span class="error-field"
-                  *ngIf="(email.errors?.required && email.touched)">{{"LABEL_REQUIRED" | translate}}</span>
-                <span class="error-field"
-                  *ngIf="(email.errors?.pattern && email.touched)">{{"LABEL_EMAIL_ERROR" | translate}}</span>
-              </div>
-            </div>
+                    <span slot="message"[style.visibility]="(email.errors?.required &&  email.touched)? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
+                    <span slot="message"[style.visibility]="(email.errors?.pattern && email.touched) ? 'visible' : 'hidden'">{{"LABEL_EMAIL_ERROR" | translate}}</span> 
+                
+                  </usu-form-field>
+           
           </div>
-          <br>
-          <div fxLayout="row" class="table-row mat-field-spacing-sc" *ngIf="isCreate">
+  
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" *ngIf="isCreate" style="height: 100px!important;">
 
-            <div class="main">
-              <div class="under">
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+            
+                <usu-form-field fxFlex="50" [attr.status]="(new_password.errors?.required && new_password.touched ) ? 'error' : ''" [attr.status]="(new_password.errors?.pattern && new_password.touched ) ? 'error' : ''" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_PASSWORD' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="password" #new_password="ngModel" [(ngModel)]="user.preferences.password"
                     [pattern]="regexPassword" name="new_password" [disabled]="isCreate && creationSuccess" required>
                   </usu-input>
-
+                  <span slot="message"[style.visibility]="(new_password.errors?.required &&  new_password.touched)? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
+                  <span slot="message"[style.visibility]="(new_password.errors?.pattern && new_password.touched) ? 'visible' : 'hidden'">{{"ERROR_PASSWORD_FORMAT" | translate}}</span> 
                 </usu-form-field>
-                <span class="error-field"
-                  *ngIf="(new_password.errors?.required && new_password.touched)">{{"LABEL_REQUIRED" | translate}}</span>
-                <span class="error-field"
-                  *ngIf="(new_password.errors?.pattern && new_password.touched)">{{"ERROR_PASSWORD_FORMAT" | translate}}</span>
 
-              </div>
-            </div>
 
+             
             <div fxFlex="2%"></div>
 
-            <div class="main">
-              <div  class="under">
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;">
+   
+                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="(passwordConfirm.errors?.required && passwordConfirm.touched) ? 'error' : '' " [attr.status]="(passwordConfirm.errors?.pattern && passwordConfirm.touched) ? 'error' : '' "  >
                   <label slot="label">{{'LABEL_PASSWORD_CONFIRM' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="password" #passwordConfirm="ngModel" [(ngModel)]="user.preferences.passwordConfirm"
                     [pattern]="user.preferences.password" name="passwordConfirm"
                     [disabled]="isCreate && creationSuccess" required></usu-input>
-
+                    <span slot="message" [style.visibility]="(passwordConfirm.errors?.required &&  passwordConfirm.touched) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
+                   <span slot="message"
+                   [style.visibility]="(passwordConfirm.errors?.pattern && passwordConfirm.touched) ? 'visible' : 'hidden'">{{"ERROR_PASSWORD_MATCH" | translate}}</span>
                 </usu-form-field>
-                <span class="error-field"
-                  *ngIf="(passwordConfirm.errors?.required && passwordConfirm.touched)">{{"LABEL_REQUIRED" | translate}}</span>
-                <span class="error-field"
-                  *ngIf="(passwordConfirm.errors?.pattern && passwordConfirm.touched)">{{"ERROR_PASSWORD_MATCH" | translate}}</span>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div fxLayout="row" class="table-row mat-field-spacing-sc">
 
-            <div class="main">
-              <div  class="under">
-                <usu-form-field fxFlex="49" style="margin-bottom: 0;">
+             
+          </div>
+     
+          <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
+
+                <usu-form-field fxFlex="49" style="margin-bottom: 0;" [attr.status]="(phone.errors?.pattern && phone.touched) ? 'error' : '' " >
                   <label slot="label">{{'LABEL_PHONE' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                     type="text" #phone="ngModel" [(ngModel)]="user.preferences.phone" [pattern]="regexPhoneNumber"
                     name="phone" [disabled]="isCreate && creationSuccess" required></usu-input>
-                </usu-form-field>
-                <span class="error-field"
-                  *ngIf="(phone.errors?.pattern && phone.touched)">{{"LABEL_REQUIRED" | translate}}</span>
+                    <span slot="message"
+                    [style.visibility]="(phone.errors?.pattern && phone.touched) ? 'visible' : 'hidden'">{{"LABEL_REQUIRED" | translate}}</span>
 
-              </div>
-            </div>
+   
+                </usu-form-field>
+                
           </div>
         </section>
       </div>
