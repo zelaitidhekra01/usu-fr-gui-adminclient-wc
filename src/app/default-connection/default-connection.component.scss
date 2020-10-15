@@ -6,25 +6,22 @@
     width: 100%;
   }
 
+  usu-icon.hydrated.ng-star-inserted {
+    padding: 3px !important;
+  }
   .grid-buttons {
     span {
       margin-right: 10px;
       cursor: pointer;
 
       .svg-inline--fa {
-        color: var(--usu-button-primary-background, #004f9f);
+        color:  var(--usu-button-primary-background, #004f9f);
+        margin-bottom: 3px;
+        font-size: 13px;
       }
     }
   }
-  main{
-    position:relative; /* ADD THIS! */
-    height: 200px;
-    width: 50%
-  }
-  .under{
-    display: flex;
-    flex-direction: column;
-  }
+  
   .bottom-grid-buttons {
     margin-top: 10px;
   }

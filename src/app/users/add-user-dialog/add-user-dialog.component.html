@@ -46,7 +46,7 @@
           <div fxLayout="row" class="table-row mat-field-spacing-sc" style="height: 100px!important;">
 
         
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="(login.errors?.required && login.touched) ? 'error' : ''" [attr.status]="(login.errors?.pattern && login.touched) ? 'error' : ''">
+                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="((login.errors?.required && login.touched) || (login.errors?.pattern && login.touched)) ? 'error' : ''">
                   <label slot="label">{{'LABEL_LOGIN' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
@@ -64,7 +64,7 @@
     
             <div fxFlex="2%"></div>
 
-                <usu-form-field fxFlex="50" [attr.status]="(email.errors?.required && email.touched ) ? 'error' : ''" [attr.status]="(email.errors?.pattern && email.touched ) ? 'error' : ''"   style="margin-bottom: 0;">
+                <usu-form-field fxFlex="50" [attr.status]="((email.errors?.required && email.touched) || (email.errors?.pattern && email.touched )) ? 'error' : ''" style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_EMAIL' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
@@ -80,7 +80,7 @@
           <div fxLayout="row" class="table-row mat-field-spacing-sc" *ngIf="isCreate" style="height: 100px!important;">
 
             
-                <usu-form-field fxFlex="50" [attr.status]="(new_password.errors?.required && new_password.touched ) ? 'error' : ''" [attr.status]="(new_password.errors?.pattern && new_password.touched ) ? 'error' : ''" style="margin-bottom: 0;">
+                <usu-form-field fxFlex="50" [attr.status]="((new_password.errors?.required && new_password.touched) || (new_password.errors?.pattern && new_password.touched )) ? 'error' : ''"  style="margin-bottom: 0;">
                   <label slot="label">{{'LABEL_PASSWORD' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
@@ -96,7 +96,7 @@
             <div fxFlex="2%"></div>
 
    
-                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="(passwordConfirm.errors?.required && passwordConfirm.touched) ? 'error' : '' " [attr.status]="(passwordConfirm.errors?.pattern && passwordConfirm.touched) ? 'error' : '' "  >
+                <usu-form-field fxFlex="50" style="margin-bottom: 0;" [attr.status]="((passwordConfirm.errors?.required && passwordConfirm.touched) || (passwordConfirm.errors?.pattern && passwordConfirm.touched))? 'error' : '' "  >
                   <label slot="label">{{'LABEL_PASSWORD_CONFIRM' | translate}}</label>
                   <usu-input slot="input"
                     class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"

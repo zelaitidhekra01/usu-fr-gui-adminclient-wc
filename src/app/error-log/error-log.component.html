@@ -10,7 +10,7 @@
       </div>
       <button mat-raised-button class="smartcollect refresh text-center-sc" (click)="refresh()"
               aria-label="Refresh">
-        <span *ngIf="!isRefreshing"><i class="fa fa-sync-alt" aria-hidden="true"></i></span>
+        <span *ngIf="!isRefreshing"><usu-icon type="refresh" size="small" class="hydrated"></usu-icon></span>
         <span *ngIf="isRefreshing"><i class="fa fa-sync-alt fa-spin" aria-hidden="true"></i></span>
       </button>
     </div>
@@ -65,19 +65,19 @@
         </ng-template>
 
         <ng-template #detailMessageTpl let-row="row" let-value="value" ngx-datatable-cell-template>
-          <div class="center grid-buttons">
+          <div class="center grid-buttons" style="padding-top: 4px !important;">
                 <span (click)="openPopupDetailDialog(row, 'data')" class="flexChildren"
                       matTooltip="{{'LABEL_PENCIL_DETAIL' | translate}}">
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <usu-icon type="search" size="small" class="hydrated"></usu-icon>
                 </span>
           </div>
         </ng-template>
 
         <ng-template #errorMessageTpl let-row="row" let-value="value" ngx-datatable-cell-template>
-          <div class="center grid-buttons">
+          <div class="center grid-buttons" style="padding-top: 4px !important;">
                 <span (click)="openPopupDetailDialog(row, 'error')" class="flexChildren"
                       matTooltip="{{'LABEL_PENCIL_DETAIL' | translate}}">
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                      <usu-icon type="search" size="small" class="hydrated"></usu-icon>
                 </span>
           </div>
         </ng-template>

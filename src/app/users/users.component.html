@@ -20,7 +20,7 @@
         <ng-template #actionTpl let-row="row" ngx-datatable-cell-template>
           <div class="center grid-buttons" style="padding-top: 4px !important;">
             <span title="{{'PLAT.USERS.EDIT.INFO' | translate}}" (click)="editUser(row)"
-              matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}" stype="border: 1px solid red;">
+              matTooltip="{{'LABEL_PENCIL_EDIT' | translate}}">
               <usu-icon type="edit" size="small" class="hydrated"></usu-icon>
             </span>
             <span title="{{'PLAT.USERS.DELETE.INFO' | translate}}" (click)="deleteUser(row)"
