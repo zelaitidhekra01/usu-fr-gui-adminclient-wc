@@ -50,55 +50,49 @@
                   <usu-radio-button [value]="FORMAT_MINUTE" [disabled]="disableButtons" style="margin-right: 12px;">
                     {{label_format_minute0}}
                   </usu-radio-button>
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field fxFlex style="line-height: 15px;width: 35px;margin-bottom: 3px!important">
+              
+                      <usu-form-field fxFlex style="line-height: 15px;width: 49px;margin-bottom: 3px!important"
+                      [attr.status]="((scheduleGroup.controls.fmi_minute.invalid) && (scheduleGroup.controls.fmi_minute.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fmi_minute" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let minute of minutesList" [value]="minute+1">{{ minute + 1 }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fmi_minute.invalid) && (scheduleGroup.controls.fmi_minute.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>  
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fmi_minute.invalid && scheduleGroup.controls.fmi_minute.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                     
 
 
                   <mat-label class="monthly-label" style="width: 175px;">{{label_format_minute1}}</mat-label>
 
 
-
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fmi_startHour.invalid) && (scheduleGroup.controls.fmi_startHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fmi_startHour" (change)="fmiChangeMinHour($event)"
                           class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default" style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fmi_startHour.invalid) && (scheduleGroup.controls.fmi_startHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fmi_startHour.invalid && scheduleGroup.controls.fmi_startHour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
-
+                      
+                   
 
 
                   <mat-label class="monthly-label">{{label_format_minute2}}</mat-label>
 
 
-
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;;margin-bottom: 3px!important;">
+                      <usu-form-field style="line-height: 15px;width: 35px;;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fmi_endHour.invalid )&& (scheduleGroup.controls.fmi_endHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fmi_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fmi_endHour.invalid )&& (scheduleGroup.controls.fmi_endHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fmi_endHour.invalid && scheduleGroup.controls.fmi_endHour.touched ">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+           
+                   
 
 
 
@@ -132,49 +126,49 @@
                     {{label_format_hour0}}
                   </usu-radio-button>
 
-                  <div class="main" style="width: 38px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 47px;margin-bottom: 3px!important;">
+            
+                      <usu-form-field style="line-height: 15px;width: 47px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fho_hour.invalid) && (scheduleGroup.controls.fho_hour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fho_hour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of sixHoursList" [value]="hour+1">{{ hour + 1}}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fho_hour.invalid) && (scheduleGroup.controls.fho_hour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fho_hour.invalid && scheduleGroup.controls.fho_hour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                    
+                    
 
 
                   <mat-label class="monthly-label" style="width: 175px;">{{label_format_hour1}}</mat-label>
 
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+        
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fho_startHour.invalid) && (scheduleGroup.controls.fho_startHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fho_startHour" (change)="fhoChangeMinHour($event)"
                           class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default" style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fho_startHour.invalid) && (scheduleGroup.controls.fho_startHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fho_startHour.invalid && scheduleGroup.controls.fho_startHour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+             
+                   
 
                   <mat-label class="monthly-label">{{label_format_hour2}}</mat-label>
 
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                  
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fho_endHour.invalid) && (scheduleGroup.controls.fho_endHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fho_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fho_endHour.invalid) && (scheduleGroup.controls.fho_endHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fho_endHour.invalid && scheduleGroup.controls.fho_endHour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                      
+                   
 
                   <mat-label class="monthly-label">{{label_format_hour3}}</mat-label>
                 </div>
@@ -207,32 +201,31 @@
                     {{label_format_day0}}
                   </usu-radio-button>
 
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fda_startHour.invalid) && (scheduleGroup.controls.fda_startHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fda_startHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fda_startHour.invalid) && (scheduleGroup.controls.fda_startHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fda_startHour.invalid && scheduleGroup.controls.fda_startHour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                     
+                   
                   <mat-label class="monthly-label">{{label_format_day1}}</mat-label>
 
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fda_endHour.invalid) && (scheduleGroup.controls.fda_endHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fda_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fda_endHour.invalid) && (scheduleGroup.controls.fda_endHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fda_endHour.invalid && scheduleGroup.controls.fda_endHour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                   
+                   
 
                   <mat-label class="monthly-label">{{label_format_day2}}</mat-label>
                 </div>
@@ -264,48 +257,46 @@
                   <usu-radio-button [value]="FORMAT_MONTH" [disabled]="disableButtons" style="margin-right: 12px;">
                     {{label_format_month0}}
                   </usu-radio-button>
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                  
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fmo_dayOfMonth.invalid) && (scheduleGroup.controls.fmo_dayOfMonth.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fmo_dayOfMonth" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let day of daysList" [value]="day">{{ day }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fmo_dayOfMonth.invalid) && (scheduleGroup.controls.fmo_dayOfMonth.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid && scheduleGroup.controls.fmo_dayOfMonth.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                  
 
                   <mat-label class="monthly-label" style="width: 175px;">{{label_format_month1}}</mat-label>
 
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;">
+                
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fmo_dayOfMonth.invalid) && (scheduleGroup.controls.fmo_dayOfMonth.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fmo_startHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fmo_dayOfMonth.invalid) && (scheduleGroup.controls.fmo_dayOfMonth.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fmo_dayOfMonth.invalid && scheduleGroup.controls.fmo_dayOfMonth.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
-
+                      
+                   
                   <mat-label class="monthly-label">{{label_format_month2}}</mat-label>
 
-                  <div class="main" style="width: 41px;">
-                    <div class="under">
-                      <usu-form-field style="line-height: 15px;width: 35px;margin-bottom: 3px!important;">
+                
+                      <usu-form-field style="line-height: 15px;width: 49px;margin-bottom: 3px!important;"
+                      [attr.status]="((scheduleGroup.controls.fmo_endHour.invalid) && (scheduleGroup.controls.fmo_endHour.touched)) ? 'error' : '' ">
                         <select slot="input" formControlName="fmo_endHour" class="usu-input-active sc-usu-input-h sc-usu-input-s usu-input-filled hydrated usu-input-default"
                           style="width: 71px; padding: 4px;">
                           <option *ngFor="let hour of hoursList" [value]="hour">{{ hour }}</option>
                         </select>
+                        <span slot="message"
+                        [style.visibility]="((scheduleGroup.controls.fmo_endHour.invalid) && (scheduleGroup.controls.fmo_endHour.touched)) ? 'visible' : 'hidden'">{{getErrorMessage()}}</span>
                       </usu-form-field>
-                      <span class="error-field"
-                        *ngIf="scheduleGroup.controls.fmo_endHour.invalid && scheduleGroup.controls.fmo_endHour.touched">{{getErrorMessage()}}</span>
-                    </div>
-                  </div>
+                      
+                   
 
                   <mat-label class="monthly-label">{{label_format_month3}}</mat-label>
                 </div>
